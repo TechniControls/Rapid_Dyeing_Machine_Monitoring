@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\view\\processcontrolview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\view\\processcontrolview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProcessControlView.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-12T02:21:56.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeView.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\HomeView.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\View\\HomeView.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\HomeView.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\View\\HomeView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-12T02:16:20.551Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
