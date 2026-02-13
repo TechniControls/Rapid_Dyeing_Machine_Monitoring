@@ -35,9 +35,10 @@ namespace Rapid_Monitoring
             var nav = (NavigationService)_serviceProvider.GetRequiredService<INavigationService>();
 
             // 🔥 AQUÍ es donde deben registrarse
-            nav.RegisterMapping<ProcessControlViewModel, ProcessControlView>();
-            nav.RegisterMapping<TemperatureTrendViewModel, TemperatureTrendView>();
             nav.RegisterMapping<HomeViewModel, HomeView>();
+            nav.RegisterMapping<ProcessControlViewModel, ProcessControlView>();
+            nav.RegisterMapping<RecipesViewModel, RecipesView>();
+            nav.RegisterMapping<TemperatureTrendViewModel, TemperatureTrendView>();
             nav.RegisterMapping<ConnectionViewModel, ConnectionWindow>();
 
             nav.SetContentControl(mainWindow.NavigationContent);
@@ -68,6 +69,7 @@ namespace Rapid_Monitoring
             services.AddTransient<ProcessControlViewModel>();
             services.AddTransient<ConnectionViewModel>();
             services.AddTransient<HomeViewModel>();
+            services.AddTransient<RecipesViewModel>();
 
             // SERVICES
             //services.AddSingleton<IConnectionService, ConnectionService>();

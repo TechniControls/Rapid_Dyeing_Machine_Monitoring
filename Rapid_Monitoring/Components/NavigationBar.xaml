@@ -40,6 +40,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <TextBlock
@@ -69,7 +70,16 @@
             Content="Process Control" />
 
         <Button
-            Grid.Column="3"
+    Grid.Column="3"
+    Margin="10 0 0 0"
+    FontSize="14"
+    VerticalAlignment="Center"
+    Foreground="Black"
+    Command="{Binding NavigateRecipesCommand}"
+    Content="Recipes" />
+
+        <Button
+            Grid.Column="4"
             Margin="10 0 0 0"
             FontSize="14"
             VerticalAlignment="Center"
@@ -78,7 +88,7 @@
             Content="Temperature Trend"/>
 
         <Button
-            Grid.Column="4"
+            Grid.Column="5"
             Margin="10 0 10 0"
             FontSize="14"
             VerticalAlignment="Center"

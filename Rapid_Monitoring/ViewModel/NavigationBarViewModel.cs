@@ -16,16 +16,19 @@ namespace Rapid_Monitoring.ViewModel
         private readonly INavigationService _processControlNavigationService;
         private readonly INavigationService _homeNavigationService;
         private readonly INavigationService _connectionNavigationService;
-        public ICommand NavigateTemperatureTrendCommand { get; }
-        public ICommand NavigateProcessControlCommand { get; }
+        private readonly INavigationService _recipesNavigationService;
         public ICommand NavigateHomeCommand { get; }
+        public ICommand NavigateProcessControlCommand { get; }
+        public ICommand NavigateRecipesCommand { get; }
+        public ICommand NavigateTemperatureTrendCommand { get; }
         public ICommand OpenConnectionCommand {  get; }
 
         public NavigationBarViewModel(
             INavigationService temperatureTrendNavigationService,
             INavigationService processControlNavigationService,
             INavigationService homeNavigationService,
-            INavigationService connectionNavigationService)
+            INavigationService connectionNavigationService,
+            INavigationService recipesNavigationService)
         {
             _temperatureTrendNavigationService = temperatureTrendNavigationService;
             NavigateTemperatureTrendCommand = new RelayCommand (
@@ -42,6 +45,10 @@ namespace Rapid_Monitoring.ViewModel
             _connectionNavigationService = connectionNavigationService;
             OpenConnectionCommand = new RelayCommand(
                 _ => _connectionNavigationService.OpenWindow<ConnectionViewModel>());
+
+            _recipesNavigationService = recipesNavigationService;
+            NavigateRecipesCommand = new RelayCommand(
+                _ => _recipesNavigationService.NavigateTo<RecipesViewModel>());
 
         }
     }
