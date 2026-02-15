@@ -6,7 +6,6 @@ C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debu
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Rapid_Monitoring.csproj.AssemblyReference.cache
-C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Components\NavigationBar.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\MainWindow.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ConnectionWindow.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\HomeView.g.cs
@@ -16,7 +15,6 @@ C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debu
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\App.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Rapid_Monitoring_MarkupCompile.cache
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Rapid_Monitoring_MarkupCompile.lref
-C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Components\NavigationBar.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\MainWindow.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ConnectionWindow.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\HomeView.baml
@@ -35,3 +33,6 @@ C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debu
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Rapid_Monitoring.pdb
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Rapid_Monitoring.genruntimeconfig.cache
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\ref\Rapid_Monitoring.dll
+C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\Components\NavigationBar.g.cs
+C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\Components\NavigationBar.baml
+C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debug\net10.0-windows\S7.Net.dll

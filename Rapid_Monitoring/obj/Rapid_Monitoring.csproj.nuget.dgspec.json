@@ -54,6 +54,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[10.0.3, )"
+            },
+            "S7netplus": {
+              "target": "Package",
+              "version": "[0.20.0, )"
             }
           },
           "imports": [

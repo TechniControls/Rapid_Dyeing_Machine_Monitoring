@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\viewmodel\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\viewmodel\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\model\\recipesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\model\\recipesmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\view\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\view\\recipesview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\view\\recipesview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\services\\connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\services\\connectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\viewmodel\\connectionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0221FCD-95FA-A3DC-B11F-1FB396E2030D}|Rapid_Monitoring\\Rapid_Monitoring.csproj|solutionrelative:rapid_monitoring\\viewmodel\\connectionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +30,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RecipesViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\ViewModel\\RecipesViewModel.cs",
-              "RelativeDocumentMoniker": "Rapid_Monitoring\\ViewModel\\RecipesViewModel.cs",
-              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\ViewModel\\RecipesViewModel.cs",
-              "RelativeToolTip": "Rapid_Monitoring\\ViewModel\\RecipesViewModel.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAADwvx0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T00:44:16.02Z",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\MainWindow.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-15T02:50:35.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RecipesModel.cs",
-              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Model\\RecipesModel.cs",
-              "RelativeDocumentMoniker": "Rapid_Monitoring\\Model\\RecipesModel.cs",
-              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Model\\RecipesModel.cs",
-              "RelativeToolTip": "Rapid_Monitoring\\Model\\RecipesModel.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBUAAAAxAAAAAAAAAA==",
+              "Title": "HomeView.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\HomeView.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\View\\HomeView.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\HomeView.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\View\\HomeView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-15T02:35:04.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RecipesView.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\RecipesView.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\View\\RecipesView.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\RecipesView.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\View\\RecipesView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-15T02:40:14.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConnectionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\ViewModel\\ConnectionViewModel.cs",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\ViewModel\\ConnectionViewModel.cs",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\ViewModel\\ConnectionViewModel.cs",
+              "RelativeToolTip": "Rapid_Monitoring\\ViewModel\\ConnectionViewModel.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAQwBIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T01:27:07.893Z",
+              "WhenOpened": "2026-02-15T01:51:32.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConnectionService.cs",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Services\\ConnectionService.cs",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\Services\\ConnectionService.cs",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Services\\ConnectionService.cs",
+              "RelativeToolTip": "Rapid_Monitoring\\Services\\ConnectionService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwCEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T00:53:37.361Z",
               "EditorCaption": ""
             }
           ]

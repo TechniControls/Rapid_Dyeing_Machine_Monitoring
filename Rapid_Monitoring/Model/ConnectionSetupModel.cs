@@ -16,7 +16,7 @@ namespace Rapid_Monitoring.Model
 
         public ObservableCollection<int> Rack = new ObservableCollection<int>
         {
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            0,1, 2, 3, 4, 5, 6, 7
         };
 
         public ObservableCollection<int> Slot = new ObservableCollection<int>

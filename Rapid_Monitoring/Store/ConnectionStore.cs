@@ -10,5 +10,6 @@ namespace Rapid_Monitoring.Store
         public string IpAddress { get; set; } = string.Empty;
         public string SelectedRack { get; set; } = string.Empty;
         public string SelectedSlot { get; set; } = string.Empty;
+        public bool IsConnected {get; set; }
     }
 }

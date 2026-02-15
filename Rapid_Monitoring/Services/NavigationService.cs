@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Rapid_Monitoring.Model;
-using Rapid_Monitoring.ViewModel;
+using Rapid_Monitoring.Infrastructure.Base;
 
 namespace Rapid_Monitoring.Services
 {

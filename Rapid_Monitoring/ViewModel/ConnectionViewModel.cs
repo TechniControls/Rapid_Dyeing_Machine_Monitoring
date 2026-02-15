@@ -1,10 +1,10 @@
-﻿using Rapid_Monitoring.Model;
+﻿using Rapid_Monitoring.Infrastructure.Base;
+using Rapid_Monitoring.Infrastructure.Commands;
+using Rapid_Monitoring.Model;
+using Rapid_Monitoring.Services;
 using Rapid_Monitoring.Store;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 
 namespace Rapid_Monitoring.ViewModel
 {
@@ -15,15 +15,28 @@ namespace Rapid_Monitoring.ViewModel
         private readonly ConnectionStore _connectionStore;
         #endregion
 
+        #region Relays Commands
+        public RelayCommand ExecuteOpenConnectionCmd{ get; }
+        public RelayCommand ExecuteCloseConnectionCmd { get; }
+
+        #endregion
+
+        #region Observable Collections
+        public ObservableCollection<string> CpuTypes => _connectionSetupModel.CpuType;
+        public ObservableCollection<int> Racks => _connectionSetupModel.Rack;
+        public ObservableCollection<int> Slots => _connectionSetupModel.Slot;
+        #endregion
+
         public ConnectionViewModel(ConnectionStore connectionStore)
         {
             _connectionSetupModel = new ConnectionSetupModel();
             _connectionStore = connectionStore;
+
+            // Commands
+            ExecuteOpenConnectionCmd = new RelayCommand(_ => OpenConnection(), _ => !IsConnected);
+            ExecuteCloseConnectionCmd = new RelayCommand(_ => CloseConnection(), _ => IsConnected);
         }
 
-        public ObservableCollection<string> CpuTypes => _connectionSetupModel.CpuType;
-        public ObservableCollection<int> Racks => _connectionSetupModel.Rack;
-        public ObservableCollection<int> Slots => _connectionSetupModel.Slot;
 
         public string SelectedCpuType
         {
@@ -63,10 +76,36 @@ namespace Rapid_Monitoring.ViewModel
             get => _connectionStore.SelectedSlot;
             set
             {
-                _connectionStore.SelectedSlot= value;
+                _connectionStore.SelectedSlot = value;
                 OnPropertyChanged();
                 Debug.WriteLine($"Selected Slot: {value}");
             }
+        }
+
+        public bool IsConnected
+        {
+            get => _connectionStore.IsConnected;
+            set
+            {
+                _connectionStore.IsConnected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void OpenConnection()
+        {
+            bool connection = ConnectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
+
+            if (connection)
+                IsConnected = true;
+        }
+
+        private void CloseConnection()
+        {
+            bool connection = ConnectionService.DisconnectPlc();
+
+            if (connection)
+                IsConnected= false;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Rapid_Monitoring.Commands;
+﻿using Rapid_Monitoring.Infrastructure.Commands;
 using Rapid_Monitoring.Model;
 using System;
 using System.Collections.Generic;
