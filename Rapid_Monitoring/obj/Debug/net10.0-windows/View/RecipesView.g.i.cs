@@ -53,7 +53,7 @@ namespace Rapid_Monitoring.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Rapid_Monitoring;component/view/recipesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Rapid_Monitoring;V1.0.0.0;component/view/recipesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\RecipesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

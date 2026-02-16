@@ -51,7 +51,8 @@
         <TextBox Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                  Margin="20,0,20,5" Height="27"
                  FontSize="14" FontWeight="Normal"
-                 Text="{Binding PlcIpAddress}"/>
+                 Text="{Binding PlcIpAddress, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+             />
         <!-- Select Rack -->
         <TextBlock Grid.Row="5" Text="Rack" FontSize="14" FontWeight="SemiBold" Foreground="#2C3E50"
                    Margin="20,5,20,0" />
@@ -80,12 +81,12 @@
                         Content="Connect"
                         Height="35" Width="100"
                         FontSize="14" FontWeight="Medium"
-                        Command="{Binding ExecuteOpenConnectionCmd}"/>
+                        Command="{Binding OpenConnectionCommand}"/>
                 <Button Grid.Row="0" Margin="120,0,0,0"
                         Content="Disconnect"
                         Height="35" Width="100"
                         FontSize="14" FontWeight="Medium"
-                        Command="{Binding ExecuteCloseConnectionCmd}"/>
+                        Command="{Binding CloseConnectionCommand}"/>
 
             </Grid>
         </StackPanel>

@@ -1,21 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Threading.Tasks.Dataflow;
+using System.Windows;
 using Rapid_Monitoring.Infrastructure.Base;
 using Rapid_Monitoring.Services.Interfaces;
 using S7.Net;
 
 namespace Rapid_Monitoring.Services
 {
-    public static class ConnectionService 
+    public static class ConnectionService
     {
-        private static Plc _plc;
+        private static Plc _plcStation;
+
+        #region PLC Addresses
+        private const string _tempAddress = "DB1.DBD0";
+        private const string _timeAddress = "DB1.DBD1";
+        private const string _speedAddress = "DB1.DBD2";
+        #endregion
 
         public static bool ConnectPlc(string cpuType, string ipAddress, string rack, string slot)
         {
+            if (string.IsNullOrEmpty(cpuType) || string.IsNullOrEmpty(ipAddress) || string.IsNullOrEmpty(rack) || string.IsNullOrEmpty(slot))
+            {
+                MessageBox.Show("Connection parameters cannot be null or empty.");
+                return false;
+            }
             try
             {
                 CpuType selectedCpuType = cpuType switch
@@ -29,15 +41,15 @@ namespace Rapid_Monitoring.Services
                 Int16 slotId = Int16.Parse(slot);
 
                 // Create PLC Instance
-                _plc = new Plc(selectedCpuType, ipAddress, rackId, slotId);
+                _plcStation = new Plc(selectedCpuType, ipAddress, rackId, slotId);
 
                 // Open Connection
-                _plc.Open();
+                _plcStation.Open();
                 return true;
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"Error connecting to PLC: {e.Message}");
+                MessageBox.Show($"Error connecting to PLC: {e.Message}");
                 return false;
             }
         }
@@ -47,7 +59,7 @@ namespace Rapid_Monitoring.Services
             try
             {
                 // Close Connection
-                _plc.Close();
+                _plcStation.Close();
                 return true;
             }
             catch (Exception e)
@@ -56,6 +68,16 @@ namespace Rapid_Monitoring.Services
                 return false;
             }
         }
+
+        #region Methods for Write Recipes
+        // Polyester Recipe
+        public static void WriteRecipe(string temperature, string time, string speed)
+        {
+            _plcStation.Write(_tempAddress, float.Parse(temperature));
+            _plcStation.Write(_timeAddress, float.Parse(time));
+            _plcStation.Write(_speedAddress, float.Parse(speed));
+        }
+        #endregion
 
     }
 

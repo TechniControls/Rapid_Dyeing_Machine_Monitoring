@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\App.xaml
-7-92813749
+61104878074
 
-26-1621454832
-209-1451169412
-MainWindow.xaml;View\Components\NavigationBar.xaml;View\ConnectionWindow.xaml;View\HomeView.xaml;View\ProcessControlView.xaml;View\RecipesView.xaml;View\TemperatureTrendView.xaml;
+24-88617784
+226-1922376109
+MainWindow.xaml;View\Components\NavigationBar.xaml;View\ConnectionWindow.xaml;View\HomeView.xaml;View\ProcessControlView.xaml;View\TemperatureTrendView.xaml;
 
 False
 

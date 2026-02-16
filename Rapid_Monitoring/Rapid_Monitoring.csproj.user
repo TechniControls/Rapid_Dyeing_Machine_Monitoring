@@ -14,9 +14,6 @@
     <Compile Update="View\ProcessControlView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\RecipesView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\TemperatureTrendView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

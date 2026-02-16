@@ -33,10 +33,9 @@
         </Style>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Grid Background="Beige" MaxWidth="1080" Margin="20 10" Height="50">
+    <Grid Background="#F3F4F6" MaxWidth="1080" Height="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -49,7 +48,8 @@
             FontWeight="Bold"
             Foreground="Black"
             VerticalAlignment="Center"
-            Text="{Binding Title}" />
+            Margin="20,0,0,0"
+            Text="Encajes SA" />
 
         <Button
             Grid.Column="1"
@@ -70,16 +70,7 @@
             Content="Process Control" />
 
         <Button
-    Grid.Column="3"
-    Margin="10 0 0 0"
-    FontSize="14"
-    VerticalAlignment="Center"
-    Foreground="Black"
-    Command="{Binding NavigateRecipesCommand}"
-    Content="Recipes" />
-
-        <Button
-            Grid.Column="4"
+            Grid.Column="3"
             Margin="10 0 0 0"
             FontSize="14"
             VerticalAlignment="Center"
@@ -88,8 +79,8 @@
             Content="Temperature Trend"/>
 
         <Button
-            Grid.Column="5"
-            Margin="10 0 10 0"
+            Grid.Column="4"
+            Margin="10 0 20 0"
             FontSize="14"
             VerticalAlignment="Center"
             Foreground="Black"

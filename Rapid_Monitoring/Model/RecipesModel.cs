@@ -20,5 +20,10 @@ namespace Rapid_Monitoring.Model
         public string BlondaTemperature { get; } = "75°C";
         public string BlondaTime { get; } = "2 min";
         public string BlondaSpeed { get; } = "300 RPM";
+
+        // Blonda Recipe
+        public string DecorationTemperature { get; } = "75°C";
+        public string DecorationTime { get; } = "2 min";
+        public string DecorationSpeed { get; } = "300 RPM";
     }
 }

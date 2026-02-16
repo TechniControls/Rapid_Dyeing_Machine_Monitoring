@@ -4,11 +4,15 @@ using Rapid_Monitoring.Model;
 using Rapid_Monitoring.Services;
 using Rapid_Monitoring.Store;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
+using System.Net;
+using System.Windows;
 
 namespace Rapid_Monitoring.ViewModel
 {
-    public class ConnectionViewModel : ViewModelBase
+    public class ConnectionViewModel : ViewModelBase, IDataErrorInfo
     {
         #region Instance Classes
         private readonly ConnectionSetupModel _connectionSetupModel;
@@ -16,8 +20,8 @@ namespace Rapid_Monitoring.ViewModel
         #endregion
 
         #region Relays Commands
-        public RelayCommand ExecuteOpenConnectionCmd{ get; }
-        public RelayCommand ExecuteCloseConnectionCmd { get; }
+        public RelayCommand OpenConnectionCommand { get; }
+        public RelayCommand CloseConnectionCommand { get; }
 
         #endregion
 
@@ -33,11 +37,11 @@ namespace Rapid_Monitoring.ViewModel
             _connectionStore = connectionStore;
 
             // Commands
-            ExecuteOpenConnectionCmd = new RelayCommand(_ => OpenConnection(), _ => !IsConnected);
-            ExecuteCloseConnectionCmd = new RelayCommand(_ => CloseConnection(), _ => IsConnected);
+            OpenConnectionCommand = new RelayCommand(_ => OpenConnection(), _ => !IsConnected);
+            CloseConnectionCommand = new RelayCommand(_ => CloseConnection(), _ => IsConnected);
         }
 
-
+        #region Properties
         public string SelectedCpuType
         {
             get => _connectionStore.SelectedCpuType;
@@ -92,8 +96,31 @@ namespace Rapid_Monitoring.ViewModel
             }
         }
 
+        // IDataErrorInfo Implementation
+        public string Error => null;
+
+        public string this [string columnName]
+        {
+            get
+            {
+                if(columnName == nameof(PlcIpAddress))
+                {
+                    if(string.IsNullOrEmpty(PlcIpAddress))
+                        return MessageBox.Show("IP Address cannot be empty.").ToString();
+
+                    if (!IPAddress.TryParse(PlcIpAddress, out _))
+                        return MessageBox.Show("Invalid IP Address format.").ToString();
+                }
+                return null;
+            }
+        }
+        #endregion
+
+        #region Methods
         private void OpenConnection()
         {
+
+
             bool connection = ConnectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
 
             if (connection)
@@ -105,7 +132,8 @@ namespace Rapid_Monitoring.ViewModel
             bool connection = ConnectionService.DisconnectPlc();
 
             if (connection)
-                IsConnected= false;
+                IsConnected = false;
         }
+        #endregion
     }
 }

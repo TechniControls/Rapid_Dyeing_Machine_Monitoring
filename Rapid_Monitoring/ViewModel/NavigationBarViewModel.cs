@@ -1,8 +1,5 @@
 ﻿using Rapid_Monitoring.Infrastructure.Commands;
 using Rapid_Monitoring.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 
@@ -10,16 +7,13 @@ namespace Rapid_Monitoring.ViewModel
 {
     public class NavigationBarViewModel
     {
-        public string Title => "Encajes SA Dyeing Lab";
 
         private readonly INavigationService _temperatureTrendNavigationService;
         private readonly INavigationService _processControlNavigationService;
         private readonly INavigationService _homeNavigationService;
         private readonly INavigationService _connectionNavigationService;
-        private readonly INavigationService _recipesNavigationService;
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateProcessControlCommand { get; }
-        public ICommand NavigateRecipesCommand { get; }
         public ICommand NavigateTemperatureTrendCommand { get; }
         public ICommand OpenConnectionCommand {  get; }
 
@@ -27,8 +21,7 @@ namespace Rapid_Monitoring.ViewModel
             INavigationService temperatureTrendNavigationService,
             INavigationService processControlNavigationService,
             INavigationService homeNavigationService,
-            INavigationService connectionNavigationService,
-            INavigationService recipesNavigationService)
+            INavigationService connectionNavigationService)
         {
             _temperatureTrendNavigationService = temperatureTrendNavigationService;
             NavigateTemperatureTrendCommand = new RelayCommand (
@@ -45,10 +38,6 @@ namespace Rapid_Monitoring.ViewModel
             _connectionNavigationService = connectionNavigationService;
             OpenConnectionCommand = new RelayCommand(
                 _ => _connectionNavigationService.OpenWindow<ConnectionViewModel>());
-
-            _recipesNavigationService = recipesNavigationService;
-            NavigateRecipesCommand = new RelayCommand(
-                _ => _recipesNavigationService.NavigateTo<RecipesViewModel>());
 
         }
     }

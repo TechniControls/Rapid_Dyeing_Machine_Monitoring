@@ -27,17 +27,11 @@ namespace Rapid_Monitoring
 
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
 
-            //// 🔹 Bind PLC → TemperatureStore (UNA SOLA VEZ)
-            //PlcService.BindTemperatureStore(
-            //    _serviceProvider.GetRequiredService<TemperatureStore>()
-            //);
-
             var nav = (NavigationService)_serviceProvider.GetRequiredService<INavigationService>();
 
             // 🔥 AQUÍ es donde deben registrarse
             nav.RegisterMapping<HomeViewModel, HomeView>();
             nav.RegisterMapping<ProcessControlViewModel, ProcessControlView>();
-            nav.RegisterMapping<RecipesViewModel, RecipesView>();
             nav.RegisterMapping<TemperatureTrendViewModel, TemperatureTrendView>();
             nav.RegisterMapping<ConnectionViewModel, ConnectionWindow>();
 
@@ -69,7 +63,6 @@ namespace Rapid_Monitoring
             services.AddTransient<ProcessControlViewModel>();
             services.AddTransient<ConnectionViewModel>();
             services.AddTransient<HomeViewModel>();
-            services.AddTransient<RecipesViewModel>();
 
             // SERVICES
             //services.AddSingleton<IConnectionService, ConnectionService>();
