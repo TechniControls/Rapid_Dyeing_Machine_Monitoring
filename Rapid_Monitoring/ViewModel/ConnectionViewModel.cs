@@ -5,8 +5,8 @@ using Rapid_Monitoring.Services;
 using Rapid_Monitoring.Store;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
+using System.Windows.Media;
 using System.Net;
 using System.Windows;
 
@@ -93,19 +93,26 @@ namespace Rapid_Monitoring.ViewModel
             {
                 _connectionStore.IsConnected = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ConnectionStatus));
+                OnPropertyChanged(nameof(ConnectionStatusColor));
+                OpenConnectionCommand.RaiseCanExecuteChanged();
+                CloseConnectionCommand.RaiseCanExecuteChanged();
             }
         }
+        // Connection Status Indicator
+        public string ConnectionStatus => IsConnected ? "Connected" : "Disconnected";
+        public Brush ConnectionStatusColor => IsConnected ? Brushes.Green : Brushes.Orange;
 
         // IDataErrorInfo Implementation
         public string Error => null;
 
-        public string this [string columnName]
+        public string this[string columnName]
         {
             get
             {
-                if(columnName == nameof(PlcIpAddress))
+                if (columnName == nameof(PlcIpAddress))
                 {
-                    if(string.IsNullOrEmpty(PlcIpAddress))
+                    if (string.IsNullOrEmpty(PlcIpAddress))
                         return MessageBox.Show("IP Address cannot be empty.").ToString();
 
                     if (!IPAddress.TryParse(PlcIpAddress, out _))

@@ -21,10 +21,6 @@ namespace Rapid_Monitoring.ViewModel
             }
         }
 
-        public void LoadData()
-        {
-            List<int> datas = new List<int> { 1, 2, 3, 4 };
-            Data = new ObservableCollection<DataPoint>(datas);
-        }
+       
     }
 }

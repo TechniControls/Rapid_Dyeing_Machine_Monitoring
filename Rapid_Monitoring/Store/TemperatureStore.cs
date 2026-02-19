@@ -12,7 +12,7 @@ namespace Rapid_Monitoring.Store
 
         public double CurrentValue { get; set; }
 
-        public double ProcessValue { get; set; }
+        public double ProcessValue { get; set; } 
         public double SetPointValue { get; set; }
     }
 }

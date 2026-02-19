@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Rapid_Monitoring.Infrastructure.Base;
+using Rapid_Monitoring.Services.Interfaces;
+using S7.Net;
+using ScottPlot.Colormaps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks.Dataflow;
 using System.Windows;
-using Rapid_Monitoring.Infrastructure.Base;
-using Rapid_Monitoring.Services.Interfaces;
-using S7.Net;
 
 namespace Rapid_Monitoring.Services
 {
@@ -16,9 +17,9 @@ namespace Rapid_Monitoring.Services
         private static Plc _plcStation;
 
         #region PLC Addresses
-        private const string _tempAddress = "DB1.DBD0";
-        private const string _timeAddress = "DB1.DBD1";
-        private const string _speedAddress = "DB1.DBD2";
+        private const string _tempAddress = "DB1.DBW2"; // e.g. address for temperature
+        private const string _timeAddress = "DB1.DBW6"; // e.g. address for time
+        private const string _speedAddress = "DB1.DBW4"; // e.g. address for speed
         #endregion
 
         public static bool ConnectPlc(string cpuType, string ipAddress, string rack, string slot)
@@ -71,11 +72,11 @@ namespace Rapid_Monitoring.Services
 
         #region Methods for Write Recipes
         // Polyester Recipe
-        public static void WriteRecipe(string temperature, string time, string speed)
+        public static void WriteRecipe(string temperature, string speed, string time)
         {
-            _plcStation.Write(_tempAddress, float.Parse(temperature));
-            _plcStation.Write(_timeAddress, float.Parse(time));
-            _plcStation.Write(_speedAddress, float.Parse(speed));
+            _plcStation.Write(_tempAddress, ushort.Parse(temperature));
+            _plcStation.Write(_speedAddress, ushort.Parse(speed));
+            _plcStation.Write(_timeAddress, ushort.Parse(time));
         }
         #endregion
 

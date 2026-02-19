@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Rapid_Monitoring.View"
+        xmlns:styles="clr-namespace:Rapid_Monitoring.Assets.Styles"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Title="PLC Connection" Height="350" Width="300">
@@ -23,7 +23,7 @@
         <!-- Plc Connection Status -->
         <StackPanel Grid.Row="0" Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
             <Ellipse Width="14" Height="14"
-                     Fill="Orange"
+                     Fill="{Binding ConnectionStatusColor}"
                      Margin="0,0,10,0">
                 <Ellipse.Effect>
                     <DropShadowEffect Color="#27AE60" ShadowDepth="0" BlurRadius="8" />
@@ -31,7 +31,7 @@
             </Ellipse>
             <TextBlock FontSize="14" FontWeight="Normal">
                 <Run Text="Status:" Foreground="#333" />
-                <Run Text="Disconnected"
+                <Run Text="{Binding ConnectionStatus, Mode=OneWay}"
                      FontWeight="SemiBold"
                      Foreground="#2C3E50" />
             </TextBlock>

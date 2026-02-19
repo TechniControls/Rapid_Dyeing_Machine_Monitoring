@@ -73,7 +73,7 @@
         </Style>
 
         <Style x:Key="ControlButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="Padding" Value="16,12" />
             <Setter Property="BorderThickness" Value="0" />
@@ -106,20 +106,15 @@
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
             <StackPanel>
-                <TextBlock Text="Manual Control Panel"
-                           FontSize="20"
-                           FontWeight="SemiBold"
-                           Foreground="#1F2937"
-                           Margin="0,0,0,24" />
-
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!-- Temperature Control -->
@@ -127,7 +122,7 @@
                             Background="#F9FAFB"
                             CornerRadius="8"
                             Padding="24"
-                            Margin="0,0,12,0">
+                            Margin="12,20,12,0">
                         <StackPanel>
                             <TextBlock Text="Temperature Control"
                                        FontSize="16"
@@ -145,112 +140,72 @@
                                      Margin="0,0,0,16"
                                      BorderBrush="#D1D5DB"
                                      BorderThickness="1" />
+                            
                             <Button Content="Set Temperature"
                                     Style="{StaticResource PrimaryButtonStyle}" />
                         </StackPanel>
                     </Border>
-
-                    <!-- Process Controls -->
+                    <!-- Speed Control -->
                     <Border Grid.Column="1" Grid.Row="0"
-                            Background="#F9FAFB"
-                            CornerRadius="8"
-                            Padding="24"
-                            Margin="12,0,0,0">
+        Background="#F9FAFB"
+        CornerRadius="8"
+        Padding="24"
+        Margin="0,20,12,0">
                         <StackPanel>
-                            <TextBlock Text="Process Controls"
-                                       FontSize="16"
-                                       FontWeight="SemiBold"
-                                       Foreground="#1F2937"
-                                       Margin="0,0,0,16" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-
-                                <Button Grid.Column="0" Grid.Row="0"
-                                        Content="Start"
-                                        Background="#10B981"
-                                        Margin="0,0,6,6">
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
-                                            <Setter Property="Background" Value="#10B981" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#059669" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-
-                                <Button Grid.Column="1" Grid.Row="0"
-                                        Content="Stop"
-                                        Background="#EF4444"
-                                        Margin="6,0,0,6">
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
-                                            <Setter Property="Background" Value="#EF4444" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#DC2626" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-
-                                <Button Grid.Column="0" Grid.Row="1"
-                                        Content="Pause"
-                                        Background="#F59E0B"
-                                        Margin="0,6,6,0">
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
-                                            <Setter Property="Background" Value="#F59E0B" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#D97706" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-
-                                <Button Grid.Column="1" Grid.Row="1"
-                                        Content="Reset"
-                                        Background="#6B7280"
-                                        Margin="6,6,0,0">
-                                    <Button.Style>
-                                        <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
-                                            <Setter Property="Background" Value="#6B7280" />
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#4B5563" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Grid>
+                            <TextBlock Text="Speed Control"
+                   FontSize="16"
+                   FontWeight="SemiBold"
+                   Foreground="#1F2937"
+                   Margin="0,0,0,16" />
+                            <TextBlock Text="Target Speed (RPM)"
+                   FontSize="13"
+                   FontWeight="Medium"
+                   Foreground="#374151"
+                   Margin="0,0,0,8" />
+                            <TextBox Text="95"
+                 FontSize="14"
+                 Padding="12,10"
+                 Margin="0,0,0,16"
+                 BorderBrush="#D1D5DB"
+                 BorderThickness="1" />
+                            <Button Content="Set Speed"
+                Style="{StaticResource PrimaryButtonStyle}" />
                         </StackPanel>
                     </Border>
-
-                    <!-- Auxiliary Functions -->
-                    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                    <!-- Duration Time Control -->
+                    <Border Grid.Column="2" Grid.Row="0"
+        Background="#F9FAFB"
+        CornerRadius="8"
+        Padding="24"
+        Margin="0,20,12,0">
+                        <StackPanel>
+                            <TextBlock Text="Duration Time Control"
+                   FontSize="16"
+                   FontWeight="SemiBold"
+                   Foreground="#1F2937"
+                   Margin="0,0,0,16" />
+                            <TextBlock Text="Target Time (Min)"
+                   FontSize="13"
+                   FontWeight="Medium"
+                   Foreground="#374151"
+                   Margin="0,0,0,8" />
+                            <TextBox Text="95"
+                 FontSize="14"
+                 Padding="12,10"
+                 Margin="0,0,0,16"
+                 BorderBrush="#D1D5DB"
+                 BorderThickness="1" />
+                            <Button Content="Set Time"
+                Style="{StaticResource PrimaryButtonStyle}" />
+                        </StackPanel>
+                    </Border>
+                    <!-- Control Functions -->
+                    <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"
                             Background="#F9FAFB"
                             CornerRadius="8"
                             Padding="24"
-                            Margin="0,24,0,0">
+                            Margin="12,50,12,0">
                         <StackPanel>
-                            <TextBlock Text="Auxiliary Functions"
-                                       FontSize="16"
-                                       FontWeight="SemiBold"
-                                       Foreground="#1F2937"
-                                       Margin="0,0,0,16" />
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -258,23 +213,24 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-
-                                <Button Grid.Column="0" Content="Drain" Background="#9333EA"
-                                         Margin="0,0,6,0">
+                                <!--Button Load Recipe 1-->
+                                <!--Stop Button-->
+                                <Button Grid.Column="0" Content="Start" Background="LightBlue"
+                                    Margin="6,0,3,0">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
-                                            <Setter Property="Background" Value="#9333EA" />
+                                            <Setter Property="Background" Value="#6366F1" />
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#7E22CE" />
+                                                    <Setter Property="Background" Value="#4F46E5" />
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
                                 </Button>
-
-                                <Button Grid.Column="1" Content="Fill" Background="#6366F1"
-                                        Margin="3,0,3,0">
+                                <!--Stop Button-->
+                                <Button Grid.Column="1" Content="Stop" Background="LightBlue"
+                                        Margin="6,0,3,0">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
                                             <Setter Property="Background" Value="#6366F1" />
@@ -287,8 +243,8 @@
                                     </Button.Style>
                                 </Button>
 
-                                <Button Grid.Column="2" Content="Agitate" Background="#14B8A6"
-                                        Margin="3,0,3,0">
+                                <Button Grid.Column="2" Content="Reset" Background="LightBlue"
+                                        Margin="6,0,3,0">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
                                             <Setter Property="Background" Value="#14B8A6" />
@@ -301,7 +257,7 @@
                                     </Button.Style>
                                 </Button>
 
-                                <Button Grid.Column="3" Content="Emergency Stop" Background="#F97316"
+                                <Button Grid.Column="3" Content="Pause" Background="LightBlue"
                                          Margin="6,0,0,0">
                                     <Button.Style>
                                         <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
@@ -317,6 +273,7 @@
                             </Grid>
                         </StackPanel>
                     </Border>
+                    
                 </Grid>
             </StackPanel>
         </ScrollViewer>

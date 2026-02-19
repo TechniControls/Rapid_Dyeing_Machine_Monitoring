@@ -42,14 +42,20 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock
+        <Image Source="/Assets/Icons/logoEncajes.PNG"
+               Grid.Column="0"
+               Width="170" Height="50"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Margin="20,0,0,0"/>
+        <!--<TextBlock
             Grid.Column="0"
             FontSize="14"
             FontWeight="Bold"
             Foreground="Black"
             VerticalAlignment="Center"
             Margin="20,0,0,0"
-            Text="Encajes SA" />
+            Text="Encajes SA" />-->
 
         <Button
             Grid.Column="1"

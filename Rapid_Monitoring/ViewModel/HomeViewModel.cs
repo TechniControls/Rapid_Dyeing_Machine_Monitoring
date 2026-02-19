@@ -1,10 +1,6 @@
 ﻿using Rapid_Monitoring.Infrastructure.Commands;
 using Rapid_Monitoring.Model;
 using Rapid_Monitoring.Services;
-using S7.Net;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rapid_Monitoring.ViewModel
 {
@@ -25,12 +21,12 @@ namespace Rapid_Monitoring.ViewModel
 
             // Init Commands for Load Recipes
             // Polyester Recipe
-            LoadRecipeOneCommand= new RelayCommand(_ => ConnectionService.WriteRecipe
+            LoadRecipeOneCommand = new RelayCommand(_ => ConnectionService.WriteRecipe
             (
                 PolyesterTemperature,
-                PolyesterProcessTime,
-                PolyesterProcessSpeed
-            ) );
+                PolyesterProcessSpeed,
+                PolyesterProcessTime
+            ));
             // Powernet Recipe
             LoadRecipeTwoCommand = new RelayCommand(_ => ConnectionService.WriteRecipe
             (
@@ -38,14 +34,14 @@ namespace Rapid_Monitoring.ViewModel
                 PowernetProcessTime,
                 PowernetProcessSpeed
             ));
-            // Blonda Recipe
+            //// Blonda Recipe
             LoadRecipeThreeCommand = new RelayCommand(_ => ConnectionService.WriteRecipe
             (
                 PowernetTemperature,
                 PowernetProcessTime,
                 PowernetProcessSpeed
             ));
-            // Decoration Recipe
+            //// Decoration Recipe
             LoadRecipeFourCommand = new RelayCommand(_ => ConnectionService.WriteRecipe
             (
                 PowernetTemperature,

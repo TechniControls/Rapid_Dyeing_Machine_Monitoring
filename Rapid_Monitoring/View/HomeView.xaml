@@ -126,7 +126,7 @@
 
                     <!-- Title -->
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Lab Stenter Dryer" 
+                        <TextBlock Text="Polyester" 
                                   FontSize="28" 
                                   FontWeight="Bold" 
                                   Foreground="#1F2937"/>
@@ -192,12 +192,6 @@
                                   Foreground="#6B7280" 
                                   HorizontalAlignment="Right"/>
                     </Grid>
-                    <Border Background="#E5E7EB" CornerRadius="8" Height="12">
-                        <Border Background="#3B82F6" 
-                                CornerRadius="8" 
-                                HorizontalAlignment="Left" 
-                                Width="450"/>
-                    </Border>
                 </StackPanel>
             </Grid>
         </Border>
@@ -243,7 +237,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Ellipse Width="32" Height="32" Fill="#3B82F6" Margin="0,0,12,0"/>
                                     <StackPanel>
-                                        <TextBlock Text="Polyester Blue Dye" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937"/>
+                                        <TextBlock Text="Polyester Formula" FontSize="15" FontWeight="SemiBold" Foreground="#1F2937"/>
                                         <TextBlock Text="Recipe #1" FontSize="12" Foreground="#6B7280"/>
                                     </StackPanel>
                                 </StackPanel>
@@ -256,23 +250,40 @@
                                 <StackPanel Grid.Column="0">
                                     <!--Temperature-->
                                     <TextBlock Text="Temperature:" FontSize="12" Foreground="#6B7280"/>
-                                    <TextBlock Text="{Binding PolyesterTemperature}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
-                                    <!--Speed-->
-                                    <TextBlock Text="Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
-                                    <TextBlock Text="{Binding PolyesterProcessSpeed}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterTemperature, Mode=OneWay}"/>
+                                        <Run Text="°C"/>
+                                    </TextBlock>
+                                    <!--Fan Speed-->
+                                    <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
+                                    <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="RPM"/>
+                                    </TextBlock>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="50,0,0,0">
                                     <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280"/>
-                                    <TextBlock Text="{Binding PolyesterProcessTime}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
+                                    <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessTime, Mode=OneWay}"/>
+                                        <Run Text="Min"/>
+                                    </TextBlock>
+                                    <!--Extractor Speed-->
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
+                                    <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="RPM"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </Grid>
+                            <!--Button Load Recipe 1-->
                             <Button Content="Load Recipe" 
                                          Background="#EFF6FF" 
                                          Foreground="#3B82F6"
                                          FontWeight="Medium"
                                          Padding="12,10"
                                          BorderThickness="0"
-                                         Cursor="Hand">
+                                         Cursor="Hand"
+                                    Command="{Binding LoadRecipeOneCommand}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"
@@ -342,6 +353,12 @@
                                 <StackPanel Grid.Column="1" Margin="50,0,0,0">
                                     <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280"/>
                                     <TextBlock Text="{Binding PowernetProcessTime}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
+                                    <!--Extractor Speed-->
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
+                                    <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="RPM"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </Grid>
                             <Button Content="Load Recipe" 
@@ -350,7 +367,8 @@
                                          FontWeight="Medium"
                                          Padding="12,10"
                                          BorderThickness="0"
-                                         Cursor="Hand">
+                                         Cursor="Hand"
+                                    Command="{Binding LoadRecipeTwoCommand}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"
@@ -420,6 +438,12 @@
                                 <StackPanel Grid.Column="1" Margin="50,0,0,0">
                                     <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280"/>
                                     <TextBlock Text="{Binding BlondaProcessTime}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
+                                    <!--Extractor Speed-->
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
+                                    <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="RPM"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </Grid>
                             <Button Content="Load Recipe" 
@@ -428,7 +452,8 @@
                       FontWeight="Medium"
                       Padding="12,10"
                       BorderThickness="0"
-                      Cursor="Hand">
+                      Cursor="Hand"
+                                    Command="{Binding LoadRecipeThreeCommand}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"
@@ -452,14 +477,14 @@
                     </Border>
 
                     <!--Recipe card 4-->
-                    <Border Grid.Column="3" Grid.Row="0" 
-BorderBrush="#E5E7EB" 
-BorderThickness="1" 
-CornerRadius="8" 
-Padding="16"
-Margin="8,8,0,8"
-Cursor="Hand"
-Width="300">
+                    <Border Grid.Column="3" Grid.Row="0"
+                            BorderBrush="#E5E7EB"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="16"
+                            Margin="8,8,0,8"
+                            Cursor="Hand"
+                            Width="300">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -498,6 +523,12 @@ Width="300">
                                 <StackPanel Grid.Column="1" Margin="50,0,0,0">
                                     <TextBlock Text="Duration:" FontSize="12" Foreground="#6B7280"/>
                                     <TextBlock Text="{Binding DecorationProcessTime}" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0"/>
+                                    <!--Extractor Speed-->
+                                    <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
+                                    <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
+                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="RPM"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </Grid>
                             <Button Content="Load Recipe" 
@@ -506,7 +537,8 @@ Width="300">
         FontWeight="Medium"
         Padding="12,10"
         BorderThickness="0"
-        Cursor="Hand">
+        Cursor="Hand"
+                                Command="{Binding LoadRecipeFourCommand}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"

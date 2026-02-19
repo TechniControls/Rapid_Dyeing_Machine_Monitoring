@@ -62,7 +62,7 @@ namespace Rapid_Monitoring.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Rapid_Monitoring;V1.0.0.0;component/view/temperaturetrendview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Rapid_Monitoring;component/view/temperaturetrendview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\TemperatureTrendView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

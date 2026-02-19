@@ -9,9 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Icons\logoEncajes.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
     <PackageReference Include="S7netplus" Version="0.20.0" />
     <PackageReference Include="ScottPlot.WPF" Version="5.1.57" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\logoEncajes.PNG" />
   </ItemGroup>
 
 </Project>
