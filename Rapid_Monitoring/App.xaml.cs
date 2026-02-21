@@ -55,6 +55,7 @@ namespace Lab_Stenter_Dryer
 
             // STORES (persistencia)
             services.AddSingleton<ConnectionStore>();
+            services.AddSingleton<CustomRecipeStore>();
 
             // VIEWMODELS
             services.AddSingleton<NavigationBarViewModel>();

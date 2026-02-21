@@ -132,7 +132,7 @@
                                        FontWeight="Medium"
                                        Foreground="#374151"
                                        Margin="0,0,0,8" />
-                            <TextBox Text="95"
+                            <TextBox Text="{Binding CustomTemperature}"
                                      FontSize="14"
                                      Padding="12,10"
                                      Margin="0,0,0,16"
@@ -140,7 +140,8 @@
                                      BorderThickness="1" />
                             
                             <Button Content="Set Temperature"
-                                    Style="{StaticResource PrimaryButtonStyle}" />
+                                    Style="{StaticResource PrimaryButtonStyle}" 
+                                    Command="{Binding SetTemperatureCommand}"/>
                         </StackPanel>
                     </Border>
                     <!-- Speed Control -->
@@ -160,14 +161,15 @@
                    FontWeight="Medium"
                    Foreground="#374151"
                    Margin="0,0,0,8" />
-                            <TextBox Text="95"
+                            <TextBox Text="{Binding CustomFanSpeed}"
                  FontSize="14"
                  Padding="12,10"
                  Margin="0,0,0,16"
                  BorderBrush="#D1D5DB"
                  BorderThickness="1" />
                             <Button Content="Set Speed"
-                Style="{StaticResource PrimaryButtonStyle}" />
+                Style="{StaticResource PrimaryButtonStyle}"
+                                    Command="{Binding SetFanSpeedCommand}"/>
                         </StackPanel>
                     </Border>
                     <!-- Duration Time Control -->
@@ -187,14 +189,15 @@
                    FontWeight="Medium"
                    Foreground="#374151"
                    Margin="0,0,0,8" />
-                            <TextBox Text="95"
+                            <TextBox Text="{Binding CustomDurationTime}"
                  FontSize="14"
                  Padding="12,10"
                  Margin="0,0,0,16"
                  BorderBrush="#D1D5DB"
                  BorderThickness="1" />
                             <Button Content="Set Time"
-                Style="{StaticResource PrimaryButtonStyle}" />
+                Style="{StaticResource PrimaryButtonStyle}" 
+                                    Command="{Binding SetTimeCommand}"/>
                         </StackPanel>
                     </Border>
                     <!-- Extractor Speed Control -->
@@ -214,14 +217,15 @@ Margin="0,15,10,0">
            FontWeight="Medium"
            Foreground="#374151"
            Margin="0,0,0,8" />
-                            <TextBox Text="95"
+                            <TextBox Text="{Binding CustomExtractorSpeed}"
          FontSize="14"
          Padding="12,10"
          Margin="0,0,0,16"
          BorderBrush="#D1D5DB"
          BorderThickness="1" />
                             <Button Content="Set Speed"
-        Style="{StaticResource PrimaryButtonStyle}" />
+        Style="{StaticResource PrimaryButtonStyle}"
+                                    Command="{Binding SetExtractorSpeedCommand}"/>
                         </StackPanel>
                     </Border>
                     <!-- Control Functions -->
@@ -242,18 +246,22 @@ Margin="0,15,10,0">
                                 <!--Control Buttons-->
                                 <!--Start Button-->
                                 <Button Grid.Column="0" Content="Start" 
-                                    Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"/>
+                                    Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding StartCommand}"/>
                                 <!--Stop Button-->
                                 <Button Grid.Column="1" Content="Stop"
-                                        Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"/>
+                                        Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding StopCommand}"/>
 
                                 <!--Reset Button-->
                                 <Button Grid.Column="2" Content="Reset"
-                                        Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"/>
+                                        Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding ResetCommand}"/>
 
                                 <!--Pause Button-->
                                 <Button Grid.Column="3" Content="Pause"
-                                         Margin="6,0,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
+                                         Margin="6,0,0,0" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding PauseCommand}"/>
                             </Grid>
                         </StackPanel>
                     </Border>

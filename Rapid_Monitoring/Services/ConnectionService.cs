@@ -64,8 +64,8 @@ namespace Lab_Stenter_Dryer.Services
             }
         }
 
-        #region Methods for Write Recipes
-        // Polyester Recipe
+        #region Method for Write Recipes
+        // Write predifined recipe
         public static void WriteRecipe(string temperature, string speed, string time)
         {
             _plcStation.Write(_tempAddress, ushort.Parse(temperature));
@@ -74,6 +74,67 @@ namespace Lab_Stenter_Dryer.Services
         }
         #endregion
 
+        #region Methods for Write Custom Recipe
+
+        // Write each value for custom recipe
+        // Write Temperature
+        public static void WriteCustomTemperature(string temperature)
+        {
+            _plcStation.Write(_tempAddress, ushort.Parse(temperature));
+        }
+        // Write Fan Speed
+        public static void WriteCustomFanSpeed(string fanSpeed)
+        {
+            _plcStation.Write(_speedAddress, ushort.Parse(fanSpeed));
+        }
+        // Write Extractor Speed
+        public static void WriteCustomExtractorSpeed(string extractorSpeed)
+        {
+            _plcStation.Write(_speedAddress, ushort.Parse(extractorSpeed));
+        }
+        // Write Duration Time
+        public static void WriteCustomDurationTime(string durationTime)
+        {
+            _plcStation.Write(_timeAddress, ushort.Parse(durationTime));
+        }
+        #endregion
+
+        #region Methods for Stop, Start, Reset, Pause Process
+        // Start Process
+        public static void StartProcess()
+        {
+            // Example: Write a specific value to start the process
+            _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+        }
+        // Stop Process
+        public static void StopProcess()
+        {
+            // Example: Write a specific value to start the process
+            _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+        }
+        // Reset Process
+        public static void ResetProcess()
+        {
+            // Example: Write a specific value to start the process
+            _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+        }
+        // Pause Process
+        public static void PauseProcess()
+        {
+            // Example: Write a specific value to start the process
+            _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+        }
+
+        #endregion
+
+        #region Read Current Process, temperature, time, speed
+
+        public static async Task<ushort[]> ReadTemperature()
+        {
+            _plcStation.ReadMultipleVarsAsync()
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 
 }
