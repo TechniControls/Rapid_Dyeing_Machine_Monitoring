@@ -1232,9 +1232,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Rapid_Monitoring.csproj",
-      "projectName": "Rapid_Monitoring",
-      "projectPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Rapid_Monitoring.csproj",
+      "projectUniqueName": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Lab_Stenter_Dryer.csproj",
+      "projectName": "Lab_Stenter_Dryer",
+      "projectPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Lab_Stenter_Dryer.csproj",
       "packagesPath": "C:\\Users\\Stiven\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\obj\\",
       "projectStyle": "PackageReference",

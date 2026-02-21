@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rapid_Monitoring.ViewModel
+﻿namespace Lab_Stenter_Dryer.ViewModel
 {
-    internal class ProcessControlViewModel
+    public class ProcessControlViewModel
     {
     }
 }

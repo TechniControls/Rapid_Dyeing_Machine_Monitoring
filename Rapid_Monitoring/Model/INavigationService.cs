@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Rapid_Monitoring.Model
+namespace Lab_Stenter_Dryer.Model
 {
     public interface INavigationService
     {

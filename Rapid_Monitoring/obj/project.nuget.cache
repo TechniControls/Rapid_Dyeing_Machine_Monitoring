@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k01rfJ70cao=",
+  "dgSpecHash": "fE+Wkr0Zee4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Rapid_Monitoring.csproj",
+  "projectFilePath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Lab_Stenter_Dryer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Stiven\\.nuget\\packages\\harfbuzzsharp\\8.3.1.1\\harfbuzzsharp.8.3.1.1.nupkg.sha512",
     "C:\\Users\\Stiven\\.nuget\\packages\\harfbuzzsharp.nativeassets.linux\\8.3.1.1\\harfbuzzsharp.nativeassets.linux.8.3.1.1.nupkg.sha512",
@@ -38,9 +38,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'SkiaSharp.Views.WPF 3.119.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net10.0-windows7.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Rapid_Monitoring.csproj",
+      "projectPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Lab_Stenter_Dryer.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Rapid_Monitoring.csproj",
+      "filePath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\Lab_Stenter_Dryer.csproj",
       "libraryId": "SkiaSharp.Views.WPF",
       "targetGraphs": [
         "net10.0-windows"

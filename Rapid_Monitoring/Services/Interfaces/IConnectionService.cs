@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rapid_Monitoring.Services.Interfaces
+﻿namespace Lab_Stenter_Dryer.Services.Interfaces
 {
     public interface IConnectionService
     {

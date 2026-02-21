@@ -1,9 +1,9 @@
-﻿using Rapid_Monitoring.Infrastructure.Commands;
-using Rapid_Monitoring.Model;
+﻿using Lab_Stenter_Dryer.Infrastructure.Commands;
+using Lab_Stenter_Dryer.Model;
 using System.Windows.Input;
 
 
-namespace Rapid_Monitoring.ViewModel
+namespace Lab_Stenter_Dryer.ViewModel
 {
     public class NavigationBarViewModel
     {

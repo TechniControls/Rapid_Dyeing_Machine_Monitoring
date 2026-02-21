@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1AE07B4-8139-2ED5-5D1F-CCB9674A767C}|Rapid_Monitoring\\Lab_Stenter_Dryer.csproj|c:\\users\\stiven\\documents\\vs_projects\\rapid_monitoring\\rapid_monitoring\\view\\processcontrolview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1AE07B4-8139-2ED5-5D1F-CCB9674A767C}|Rapid_Monitoring\\Lab_Stenter_Dryer.csproj|solutionrelative:rapid_monitoring\\view\\processcontrolview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProcessControlView.xaml",
+              "DocumentMoniker": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "RelativeDocumentMoniker": "Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "ToolTip": "C:\\Users\\Stiven\\Documents\\VS_Projects\\Rapid_Monitoring\\Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "RelativeToolTip": "Rapid_Monitoring\\View\\ProcessControlView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-21T00:55:45.575Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

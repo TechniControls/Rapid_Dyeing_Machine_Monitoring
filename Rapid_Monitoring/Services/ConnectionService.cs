@@ -1,16 +1,10 @@
-﻿using Rapid_Monitoring.Infrastructure.Base;
-using Rapid_Monitoring.Services.Interfaces;
+﻿using Lab_Stenter_Dryer.Infrastructure.Base;
+using Lab_Stenter_Dryer.Services.Interfaces;
 using S7.Net;
-using ScottPlot.Colormaps;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Net;
-using System.Threading.Tasks.Dataflow;
 using System.Windows;
 
-namespace Rapid_Monitoring.Services
+namespace Lab_Stenter_Dryer.Services
 {
     public static class ConnectionService
     {

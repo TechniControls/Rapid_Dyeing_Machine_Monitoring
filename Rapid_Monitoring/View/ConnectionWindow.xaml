@@ -1,9 +1,9 @@
-﻿<Window x:Class="Rapid_Monitoring.View.ConnectionWindow"
+﻿<Window x:Class="Lab_Stenter_Dryer.View.ConnectionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:styles="clr-namespace:Rapid_Monitoring.Assets.Styles"
+        xmlns:styles="clr-namespace:Lab_Stenter_Dryer.Assets.Styles"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Title="PLC Connection" Height="350" Width="300">

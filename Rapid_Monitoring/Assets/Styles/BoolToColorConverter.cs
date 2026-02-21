@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Data;
 
-namespace Rapid_Monitoring.Assets.Styles
+namespace Lab_Stenter_Dryer.Assets.Styles
 {
     public class BoolToColorConverter :IValueConverter
     {

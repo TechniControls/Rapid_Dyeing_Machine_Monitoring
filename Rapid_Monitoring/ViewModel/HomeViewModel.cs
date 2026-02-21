@@ -1,10 +1,12 @@
-﻿using Rapid_Monitoring.Infrastructure.Commands;
-using Rapid_Monitoring.Model;
-using Rapid_Monitoring.Services;
+﻿using Lab_Stenter_Dryer.Infrastructure.Base;
+using Lab_Stenter_Dryer.Infrastructure.Commands;
+using Lab_Stenter_Dryer.Model;
+using Lab_Stenter_Dryer.Services;
+using System.Windows.Media;
 
-namespace Rapid_Monitoring.ViewModel
+namespace Lab_Stenter_Dryer.ViewModel
 {
-    public class HomeViewModel
+    public class HomeViewModel : ViewModelBase
     {
         private readonly RecipesModel _recipesModel;
 
@@ -71,6 +73,42 @@ namespace Rapid_Monitoring.ViewModel
         public string DecorationTemperature => _recipesModel.DecorationTemperature;
         public string DecorationProcessTime => _recipesModel.DecorationTime;
         public string DecorationProcessSpeed => _recipesModel.DecorationSpeed;
+        #endregion
+
+        #region Current Process Status Properties
+        public string CurrentTemp
+        {
+            get => field;
+            set
+            {
+                field = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool CurrentMachineStatus
+        {
+            get => field;
+            set
+            {
+                field = value;
+                OnPropertyChanged(nameof(MachineStatus));
+                OnPropertyChanged(nameof(ColorMachineStatus));
+            }
+        }
+        public string MachineStatus => 
+            CurrentMachineStatus? "Running" : "Stopped";
+        public Brush ColorMachineStatus =>
+            CurrentMachineStatus ? Brushes.Green : Brushes.Orange;
+
+        public string CurrentRecipe
+        {
+            get => field;
+            set
+            {
+                field = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
     }
 }

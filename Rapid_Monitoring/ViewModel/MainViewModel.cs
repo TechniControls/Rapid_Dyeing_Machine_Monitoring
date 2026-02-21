@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rapid_Monitoring.ViewModel
+﻿namespace Lab_Stenter_Dryer.ViewModel
 {
     public class MainViewModel
     {

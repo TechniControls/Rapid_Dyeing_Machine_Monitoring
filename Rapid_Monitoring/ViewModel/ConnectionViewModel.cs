@@ -1,8 +1,8 @@
-﻿using Rapid_Monitoring.Infrastructure.Base;
-using Rapid_Monitoring.Infrastructure.Commands;
-using Rapid_Monitoring.Model;
-using Rapid_Monitoring.Services;
-using Rapid_Monitoring.Store;
+﻿using Lab_Stenter_Dryer.Infrastructure.Base;
+using Lab_Stenter_Dryer.Infrastructure.Commands;
+using Lab_Stenter_Dryer.Model;
+using Lab_Stenter_Dryer.Services;
+using Lab_Stenter_Dryer.Store;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Net;
 using System.Windows;
 
-namespace Rapid_Monitoring.ViewModel
+namespace Lab_Stenter_Dryer.ViewModel
 {
     public class ConnectionViewModel : ViewModelBase, IDataErrorInfo
     {

@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Rapid_Monitoring.Model;
-using Rapid_Monitoring.ViewModel;
-using Rapid_Monitoring.View;
-using Rapid_Monitoring.Services;
-using Rapid_Monitoring.Store;
+using Lab_Stenter_Dryer.Model;
+using Lab_Stenter_Dryer.ViewModel;
+using Lab_Stenter_Dryer.View;
+using Lab_Stenter_Dryer.Services;
+using Lab_Stenter_Dryer.Store;
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using Rapid_Monitoring.Components;
+using Lab_Stenter_Dryer.Components;
 
-namespace Rapid_Monitoring
+namespace Lab_Stenter_Dryer
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Rapid_Monitoring.Store
+namespace Lab_Stenter_Dryer.Store
 {
     public class ConnectionStore
     {

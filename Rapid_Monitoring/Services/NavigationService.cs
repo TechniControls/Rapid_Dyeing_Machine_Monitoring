@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
-using Rapid_Monitoring.Model;
-using Rapid_Monitoring.Infrastructure.Base;
+using Lab_Stenter_Dryer.Model;
+using Lab_Stenter_Dryer.Infrastructure.Base;
 
-namespace Rapid_Monitoring.Services
+namespace Lab_Stenter_Dryer.Services
 {
     public class NavigationService : INavigationService
     {

@@ -1,18 +1,10 @@
-﻿using Rapid_Monitoring.Components;
-using Rapid_Monitoring.Model;
-using Rapid_Monitoring.ViewModel;
-using Rapid_Monitoring.Services;
-using System.Text;
+﻿using Lab_Stenter_Dryer.Components;
+using Lab_Stenter_Dryer.Model;
+using Lab_Stenter_Dryer.ViewModel;
+using Lab_Stenter_Dryer.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace Rapid_Monitoring
+namespace Lab_Stenter_Dryer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

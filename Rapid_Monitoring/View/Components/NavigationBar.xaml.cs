@@ -1,4 +1,4 @@
-﻿using Rapid_Monitoring.ViewModel;
+﻿using Lab_Stenter_Dryer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Rapid_Monitoring.Components
+namespace Lab_Stenter_Dryer.Components
 {
     /// <summary>
     /// Interaction logic for NavigationBar.xaml

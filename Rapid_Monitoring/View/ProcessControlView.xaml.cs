@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Rapid_Monitoring.View
+namespace Lab_Stenter_Dryer.View
 {
     /// <summary>
     /// Interaction logic for ProcessControlView.xaml

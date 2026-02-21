@@ -1,9 +1,6 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace Rapid_Monitoring.Infrastructure.Commands
+namespace Lab_Stenter_Dryer.Infrastructure.Commands
 {
     public class RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null) : ICommand
     {

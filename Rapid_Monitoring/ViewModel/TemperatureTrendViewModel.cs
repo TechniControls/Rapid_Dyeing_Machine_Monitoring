@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using Rapid_Monitoring.Infrastructure.Base;
-using S7.Net.Types;
+﻿using System.Collections.ObjectModel;
+using Lab_Stenter_Dryer.Infrastructure.Base;
 using ScottPlot;
 
-namespace Rapid_Monitoring.ViewModel
+namespace Lab_Stenter_Dryer.ViewModel
 {
     public class TemperatureTrendViewModel : ViewModelBase
     {
