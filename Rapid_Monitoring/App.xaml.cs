@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Windows;
 using Lab_Stenter_Dryer.Components;
+using Lab_Stenter_Dryer.Services.Interfaces;
 
 namespace Lab_Stenter_Dryer
 {
@@ -56,6 +57,7 @@ namespace Lab_Stenter_Dryer
             // STORES (persistencia)
             services.AddSingleton<ConnectionStore>();
             services.AddSingleton<CustomRecipeStore>();
+            services.AddSingleton<TemperatureStore>();
 
             // VIEWMODELS
             services.AddSingleton<NavigationBarViewModel>();
@@ -66,14 +68,15 @@ namespace Lab_Stenter_Dryer
             services.AddTransient<HomeViewModel>();
 
             // SERVICES
-            //services.AddSingleton<IConnectionService, ConnectionService>();
+            services.AddSingleton<ConnectionService>();
 
             // VIEWS
             services.AddSingleton<MainWindow>();
-            services.AddSingleton<NavigationBar>(s => new NavigationBar()
-            {
-                DataContext = s.GetRequiredService<NavigationBarViewModel>()
-            });
+            services.AddTransient<ProcessControlView>();
+            services.AddTransient<TemperatureTrendView>();
+            services.AddTransient<ConnectionWindow>();
+            services.AddTransient<HomeView>();
+            services.AddSingleton<NavigationBar>();
 
         }
 

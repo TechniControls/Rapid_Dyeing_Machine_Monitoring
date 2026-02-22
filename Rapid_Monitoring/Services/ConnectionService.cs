@@ -1,22 +1,53 @@
 ﻿using Lab_Stenter_Dryer.Infrastructure.Base;
 using Lab_Stenter_Dryer.Services.Interfaces;
+using Lab_Stenter_Dryer.Store;
 using S7.Net;
 using System.Diagnostics;
+using System.Drawing.Imaging.Effects;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace Lab_Stenter_Dryer.Services
 {
-    public static class ConnectionService
+    public class ConnectionService
     {
-        private static Plc _plcStation;
+        private readonly TemperatureStore _temperatureStore;
+        private readonly ConnectionStore _connectionStore;
+        private Plc? _plcStation;
+        private CancellationTokenSource? _cts;
+
+        public bool EnableCustomRecipes = false;
+
+        public ConnectionService(TemperatureStore temperatureStore, ConnectionStore connectionStore)
+        {
+            _temperatureStore = temperatureStore;
+            _connectionStore = connectionStore;
+        }
 
         #region PLC Addresses
-        private const string _tempAddress = "DB1.DBW2"; // e.g. address for temperature
-        private const string _timeAddress = "DB1.DBW6"; // e.g. address for time
-        private const string _speedAddress = "DB1.DBW4"; // e.g. address for speed
+        // Recipe Write Addresses
+        private const string _extractorSpeedAddress = "DB1.DBD0"; // Address for extractor speed DB1 4.0
+        private const string _fanSpeedAddress = "DB1.DBD4"; // Address for fan speed DB1 4.4
+        private const string _temperatureAddress = "DB1.DBD8"; // Address for temperature DB1 8.0 
+        private const string _processTimeAddress = "DB1.DBD12"; // Address for process time DB1 12.0
+
+        // Read Addresses
+        private const int _readFirstPt100 = 16; // "DB1.DBD16";  Read temperature from PT100-1
+        private const int _readSecondPt100 = 20; // "DB1.DBD20";  Read temperature from PT100-2
+
+        // Read Temperature
+        private const int _dbNumber = 1;
+        private const int _varCount = 1;
+
         #endregion
 
-        public static bool ConnectPlc(string cpuType, string ipAddress, string rack, string slot)
+        private float ReadReal(int startByte)
+        {
+            return (float)_plcStation.Read(DataType.DataBlock, _dbNumber, startByte, VarType.Real, _varCount);
+        }
+
+        #region PLC Connection Methods
+        public bool ConnectPlc(string cpuType, string ipAddress, string rack, string slot)
         {
             if (string.IsNullOrEmpty(cpuType) || string.IsNullOrEmpty(ipAddress) || string.IsNullOrEmpty(rack) || string.IsNullOrEmpty(slot))
             {
@@ -40,6 +71,7 @@ namespace Lab_Stenter_Dryer.Services
 
                 // Open Connection
                 _plcStation.Open();
+                _connectionStore.IsConnected = true;
                 return true;
             }
             catch (Exception e)
@@ -49,12 +81,14 @@ namespace Lab_Stenter_Dryer.Services
             }
         }
 
-        public static bool DisconnectPlc()
+        public bool DisconnectPlc()
         {
             try
             {
                 // Close Connection
                 _plcStation.Close();
+                _plcStation = null;
+                _connectionStore.IsConnected = false;
                 return true;
             }
             catch (Exception e)
@@ -63,63 +97,72 @@ namespace Lab_Stenter_Dryer.Services
                 return false;
             }
         }
+        #endregion
 
         #region Method for Write Recipes
         // Write predifined recipe
-        public static void WriteRecipe(string temperature, string speed, string time)
+        public void WriteRecipe(float extractorSpeed, float fanSpeed, float setPointTemperature, float processTime)
         {
-            _plcStation.Write(_tempAddress, ushort.Parse(temperature));
-            _plcStation.Write(_speedAddress, ushort.Parse(speed));
-            _plcStation.Write(_timeAddress, ushort.Parse(time));
+            try
+            {
+                _plcStation.Write(_extractorSpeedAddress, extractorSpeed); // Write extractor speed value
+                _plcStation.Write(_fanSpeedAddress, fanSpeed); // Write fan speed value
+                _plcStation.Write(_temperatureAddress, setPointTemperature); // Write temperature value
+                _plcStation.Write(_processTimeAddress, processTime); // Write process time value
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error {e.Message}");
+            }
         }
         #endregion
 
         #region Methods for Write Custom Recipe
-
         // Write each value for custom recipe
         // Write Temperature
-        public static void WriteCustomTemperature(string temperature)
+        public void WriteCustomTemperature(float setPointTemperature)
         {
-            _plcStation.Write(_tempAddress, ushort.Parse(temperature));
+            _plcStation.Write(_temperatureAddress, setPointTemperature);
         }
         // Write Fan Speed
-        public static void WriteCustomFanSpeed(string fanSpeed)
+        public void WriteCustomFanSpeed(float fanSpeed)
         {
-            _plcStation.Write(_speedAddress, ushort.Parse(fanSpeed));
+            _plcStation.Write(_fanSpeedAddress, fanSpeed);
         }
         // Write Extractor Speed
-        public static void WriteCustomExtractorSpeed(string extractorSpeed)
+        public void WriteCustomExtractorSpeed(float extractorSpeed)
         {
-            _plcStation.Write(_speedAddress, ushort.Parse(extractorSpeed));
+            _plcStation.Write(_extractorSpeedAddress, extractorSpeed);
         }
         // Write Duration Time
-        public static void WriteCustomDurationTime(string durationTime)
+        public void WriteCustomDurationTime(float processTime)
         {
-            _plcStation.Write(_timeAddress, ushort.Parse(durationTime));
+            _plcStation.Write(_processTimeAddress, processTime);
         }
         #endregion
 
         #region Methods for Stop, Start, Reset, Pause Process
         // Start Process
-        public static void StartProcess()
+        public void StartProcess()
         {
             // Example: Write a specific value to start the process
             _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
         }
         // Stop Process
-        public static void StopProcess()
+        public void StopProcess()
         {
             // Example: Write a specific value to start the process
-            _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+            //_plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
+            _cts.Cancel(); // Stop reading temperature
         }
         // Reset Process
-        public static void ResetProcess()
+        public void ResetProcess()
         {
             // Example: Write a specific value to start the process
             _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
         }
         // Pause Process
-        public static void PauseProcess()
+        public void PauseProcess()
         {
             // Example: Write a specific value to start the process
             _plcStation.Write("DB1.DBX0.0", true); // Assuming DB1.DBX0.0 is the start bit
@@ -129,12 +172,54 @@ namespace Lab_Stenter_Dryer.Services
 
         #region Read Current Process, temperature, time, speed
 
-        public static async Task<ushort[]> ReadTemperature()
+        public void ReadTemperature(float customSetPoint, float recipeSetPoint)
         {
-            _plcStation.ReadMultipleVarsAsync()
-            throw new NotImplementedException();
+            _cts = new CancellationTokenSource();
+            float setPoint;
+
+            Task.Run(async () =>
+            {
+                while (!_cts.Token.IsCancellationRequested)
+                {
+                    try
+                    {
+                        float rawValuePt1 = ReadReal(_readFirstPt100);
+                        float rawValuePt2 = ReadReal(_readSecondPt100);
+
+                        Debug.WriteLine($"pt100-1 {rawValuePt1}");
+                        Debug.WriteLine($"pt100-2 {rawValuePt2}");
+
+                        if (EnableCustomRecipes)
+                        {
+                            setPoint = customSetPoint;
+                        }
+                        else
+                        {
+                            setPoint = recipeSetPoint;
+                        }
+                        _temperatureStore.AddSample(rawValuePt1, rawValuePt2, setPoint);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error reading temperature: {ex.Message}");
+                    }
+
+                    await Task.Delay(1000, _cts.Token); // Read every second
+                }
+            }, _cts.Token);
         }
+
+
         #endregion
+
+        #region Enable Custom Recipes
+
+        public void ToggleEnableCustomRecipes()
+        {
+            EnableCustomRecipes = !EnableCustomRecipes;
+        }
     }
 
+
+    #endregion
 }

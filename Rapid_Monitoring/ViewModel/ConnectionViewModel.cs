@@ -9,14 +9,18 @@ using System.Diagnostics;
 using System.Windows.Media;
 using System.Net;
 using System.Windows;
+using System.Runtime.CompilerServices;
 
 namespace Lab_Stenter_Dryer.ViewModel
 {
     public class ConnectionViewModel : ViewModelBase, IDataErrorInfo
     {
+        public static bool IsConnectedGlobal { get; set; }
+
         #region Instance Classes
         private readonly ConnectionSetupModel _connectionSetupModel;
         private readonly ConnectionStore _connectionStore;
+        private readonly ConnectionService _connectionService;
         #endregion
 
         #region Relays Commands
@@ -31,10 +35,12 @@ namespace Lab_Stenter_Dryer.ViewModel
         public ObservableCollection<int> Slots => _connectionSetupModel.Slot;
         #endregion
 
-        public ConnectionViewModel(ConnectionStore connectionStore)
+        public ConnectionViewModel(ConnectionStore connectionStore, ConnectionService connectionService)
         {
             _connectionSetupModel = new ConnectionSetupModel();
             _connectionStore = connectionStore;
+            _connectionService = connectionService;
+            _connectionStore.PropertyChanged += OnConnectionStoreChanged;
 
             // Commands
             OpenConnectionCommand = new RelayCommand(_ => OpenConnection(), _ => !IsConnected);
@@ -86,19 +92,8 @@ namespace Lab_Stenter_Dryer.ViewModel
             }
         }
 
-        public bool IsConnected
-        {
-            get => _connectionStore.IsConnected;
-            set
-            {
-                _connectionStore.IsConnected = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(ConnectionStatus));
-                OnPropertyChanged(nameof(ConnectionStatusColor));
-                OpenConnectionCommand.RaiseCanExecuteChanged();
-                CloseConnectionCommand.RaiseCanExecuteChanged();
-            }
-        }
+        public bool IsConnected => _connectionStore.IsConnected;
+        
         // Connection Status Indicator
         public string ConnectionStatus => IsConnected ? "Connected" : "Disconnected";
         public Brush ConnectionStatusColor => IsConnected ? Brushes.Green : Brushes.Orange;
@@ -123,23 +118,34 @@ namespace Lab_Stenter_Dryer.ViewModel
         }
         #endregion
 
+        private void OnConnectionStoreChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(_connectionStore.IsConnected))
+            {
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ConnectionStatus));
+                OnPropertyChanged(nameof(ConnectionStatusColor));
+
+                OpenConnectionCommand.RaiseCanExecuteChanged();
+                CloseConnectionCommand.RaiseCanExecuteChanged();
+            }
+        }
+
         #region Methods
         private void OpenConnection()
         {
 
 
-            bool connection = ConnectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
+            bool connection = _connectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
 
-            if (connection)
-                IsConnected = true;
+           
         }
 
         private void CloseConnection()
         {
-            bool connection = ConnectionService.DisconnectPlc();
+            bool connection = _connectionService.DisconnectPlc();
 
-            if (connection)
-                IsConnected = false;
+            
         }
         #endregion
     }

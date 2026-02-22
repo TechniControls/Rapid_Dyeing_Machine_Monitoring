@@ -19,9 +19,10 @@ namespace Lab_Stenter_Dryer.Components
     /// </summary>
     public partial class NavigationBar : UserControl
     {
-        public NavigationBar()
+        public NavigationBar(NavigationBarViewModel vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

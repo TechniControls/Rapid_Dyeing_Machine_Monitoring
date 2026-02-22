@@ -18,10 +18,6 @@ namespace Lab_Stenter_Dryer.Model
         bool? ShowDialog<TViewModel>() where TViewModel : class;
         bool? ShowDialog<TViewModel>(object parameter) where TViewModel : class;
 
-        // Navigate back
-        void GoBack();
-        bool CanGoBack { get; }
-
         // Close current window
         void CloseWindow();
     }

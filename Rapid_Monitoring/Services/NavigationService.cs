@@ -10,7 +10,6 @@ namespace Lab_Stenter_Dryer.Services
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly Dictionary<Type, Type> _viewModelToViewMap;
-        private Dictionary<Type, Func<ViewModelBase>> _viewModelFactories;
         private readonly Stack<object> _navigationStack;
         private ContentControl _contentControl;
 
@@ -52,7 +51,6 @@ namespace Lab_Stenter_Dryer.Services
 
             var viewType = _viewModelToViewMap[viewModelType];
             var view = Activator.CreateInstance(viewType) as FrameworkElement;
-            // var viewModel =  Activator.CreateInstance(viewModelType);
             var viewModel = _serviceProvider.GetRequiredService(viewModelType); //change
 
             // If ViewModel has a parameter property, set it
@@ -103,8 +101,7 @@ namespace Lab_Stenter_Dryer.Services
                 throw new InvalidOperationException($"No view registered for {viewModelType.Name}");
 
             var viewType = _viewModelToViewMap[viewModelType];
-            var view = Activator.CreateInstance(viewType);
-            // var viewModel = Activator.CreateInstance(viewModelType);
+            var view = _serviceProvider.GetRequiredService(viewType) as FrameworkElement;
             var viewModel = _serviceProvider.GetRequiredService(viewModelType); //change
 
             // If ViewModel has a parameter property, set it
@@ -140,16 +137,6 @@ namespace Lab_Stenter_Dryer.Services
 
             return window;
         }
-
-        public void GoBack()
-        {
-            if (CanGoBack)
-            {
-                _contentControl.Content = _navigationStack.Pop();
-            }
-        }
-
-        public bool CanGoBack => _navigationStack.Count > 0;
 
         public void CloseWindow()
         {

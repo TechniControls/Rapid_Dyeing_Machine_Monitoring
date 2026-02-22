@@ -3,23 +3,27 @@
     public class RecipesModel
     {
         //Polyester Recipe
-        public string PolyesterTemperature { get; } = "90";
-        public string PolyesterTime { get; } = "15";
-        public string PolyesterSpeed{ get; } = "58";
+        public float PolyesterTemperature { get; } = 98;
+        public float PolyesterTime { get; } = 15;
+        public float PolyesterFanSpeed{ get; } = 25.2f;
+        public float PolyesterExtractorSpeed{ get; } = 12.6f;
 
         // Powernet Recipe
-        public string PowernetTemperature { get; } = "90";
-        public string PowernetTime { get; } = "10";
-        public string PowernetSpeed { get; } = "25";
+        public float PowernetTemperature { get; } = 105.6f;
+        public float PowernetTime { get; } = 1f;
+        public float PowernetFanSpeed { get; } = 35.3f;
+        public float PowernetExtractorSpeed { get; } = 36.9f;
 
         // Blonda Recipe
-        public string BlondaTemperature { get; } = "75";
-        public string BlondaTime { get; } = "2";
-        public string BlondaSpeed { get; } = "300";
+        public float BlondaTemperature { get; } = 95.5f;
+        public float BlondaTime { get; } = 2f;
+        public float BlondaFanSpeed { get; } = 300.5f;
+        public float BlondaExtractorSpeed { get; } = 250.4f;
 
         // Blonda Recipe
-        public string DecorationTemperature { get; } = "75";
-        public string DecorationTime { get; } = "2";
-        public string DecorationSpeed { get; } = "300";
+        public float DecorationTemperature { get; } = 56.7f;
+        public float DecorationTime { get; } = 5f;
+        public float DecorationFanSpeed { get; } = 14.6f;
+        public float DecorationExtractorSpeed { get; } = 10.8f;
     }
 }

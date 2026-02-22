@@ -120,7 +120,10 @@
                 <!-- Title and Status -->
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
@@ -137,7 +140,33 @@
                     </StackPanel>
 
                     <!-- Status and Temperature -->
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,0,0,0">
+                        <!-- Connection Status -->
+                        <StackPanel Margin="0,0,32,0">
+                            <TextBlock Text="Connection Status" 
+              FontSize="12" 
+              Foreground="#6B7280" 
+              HorizontalAlignment="Right"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                                <Ellipse Width="12" Height="12" Fill="{Binding ColorConnectionStatus}" Margin="0,0,8,0">
+                                    <Ellipse.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard RepeatBehavior="Forever">
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                           From="1.0" To="0.3" Duration="0:0:1"
+                                           AutoReverse="True"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Ellipse.Triggers>
+                                </Ellipse>
+                                <TextBlock Text="{Binding ConnectionStatus}" 
+                  FontSize="14" 
+                  FontWeight="SemiBold" 
+                  Foreground="#1F2937"/>
+                            </StackPanel>
+                        </StackPanel>
                         <!-- Machine Status -->
                         <StackPanel Margin="0,0,32,0">
                             <TextBlock Text="Estado Actual" 
@@ -165,17 +194,71 @@
                             </StackPanel>
                         </StackPanel>
 
-                        <!-- Current Temperature -->
-                        <StackPanel>
-                            <TextBlock Text="Temperatura Actual" 
+                        <!-- PT100-1 Temperature -->
+                        <StackPanel >
+                            <TextBlock Text="PT100-1" 
                                       FontSize="12" 
-                                      Foreground="#6B7280" 
-                                      HorizontalAlignment="Right"/>
-                            <TextBlock Text="85°C" 
-                                      FontSize="24" 
-                                      FontWeight="Bold" 
-                                      Foreground="#3B82F6" 
-                                      Margin="0,4,0,0"/>
+                                      Foreground="#6B7280"/>
+                            <TextBlock FontSize="24" 
+                                       FontWeight="Bold" 
+                                       Foreground="#3B82F6" 
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding ValueFirstPT100, Mode=OneWay}"/>
+                                <Run Text="°C"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <!-- PT100-2 Temperature -->
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="PT100-2"
+                                       FontSize="12" 
+                                       Foreground="#6B7280"/>
+                            <TextBlock FontSize="24" 
+                                       FontWeight="Bold" 
+                                       Foreground="#3B82F6" 
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding ValueSecondPT100, Mode=OneWay}"/>
+                                <Run Text="°C"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <!-- Delta Temperature -->
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="Δ°C"
+                                       FontSize="12"
+                                       Foreground="#6B7280"/>
+                            <TextBlock
+                                       FontSize="24" 
+                                       FontWeight="Bold" 
+                                       Foreground="#3B82F6" 
+                                       Margin="0,4,0,0">
+                                <Run Text="{Binding TemperatureDelta, Mode=OneWay}"/>
+                                <Run Text="°C"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <!-- Alarms Status -->
+                        <StackPanel Margin="32,0,32,0">
+                            <TextBlock Text="Alarmas" 
+                               FontSize="12" 
+                               Foreground="#6B7280" 
+                               HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                                <Ellipse Width="12" Height="12" Fill="{Binding ColorAlarmsStatus}" Margin="0,0,8,0">
+                                    <Ellipse.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard RepeatBehavior="Forever">
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                     From="1.0" To="0.3" Duration="0:0:1"
+                                                                     AutoReverse="True"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Ellipse.Triggers>
+                                </Ellipse>
+                                <TextBlock Text="{Binding AlarmsStatus}"
+                                           FontSize="14" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="#1F2937"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -257,7 +340,7 @@
                                     <!--Fan Speed-->
                                     <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding PolyesterFanSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -271,7 +354,7 @@
                                     <!--Extractor Speed-->
                                     <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding PolyesterExtractorSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -354,7 +437,7 @@
                                     <!--Fan Speed-->
                                     <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock Text="" FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PowernetProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding PowernetFanSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -368,7 +451,7 @@
                                     <!--Extractor Speed-->
                                     <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding PowernetExtractorSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -449,7 +532,7 @@
                                     <!--Fan Speed-->
                                     <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding BlondaProcessSpeed, Mode=OneWay}" />
+                                        <Run Text="{Binding BlondaFanSpeed, Mode=OneWay}" />
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -463,7 +546,7 @@
                                     <!--Extractor Speed-->
                                     <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding BlondaExtractorSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -545,7 +628,7 @@
                                     <!--Fan Speed-->
                                     <TextBlock Text="Fan Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding DecorationProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding DecorationFanSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -559,7 +642,7 @@
                                     <!--Extractor Speed-->
                                     <TextBlock Text="Extractor Speed:" FontSize="12" Foreground="#6B7280" Margin="0,5,0,0"/>
                                     <TextBlock  FontSize="12" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,2,0,0">
-                                        <Run Text="{Binding PolyesterProcessSpeed, Mode=OneWay}"/>
+                                        <Run Text="{Binding DecorationExtractorSpeed, Mode=OneWay}"/>
                                         <Run Text="RPM"/>
                                     </TextBlock>
                                 </StackPanel>

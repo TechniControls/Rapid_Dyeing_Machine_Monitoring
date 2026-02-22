@@ -1,13 +1,22 @@
 ﻿using Lab_Stenter_Dryer.Infrastructure.Base;
 using Lab_Stenter_Dryer.Infrastructure.Commands;
+using Lab_Stenter_Dryer.Model;
 using Lab_Stenter_Dryer.Services;
 using Lab_Stenter_Dryer.Store;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Lab_Stenter_Dryer.ViewModel
 {
     public class ProcessControlViewModel : ViewModelBase
     {
         private readonly CustomRecipeStore _customRecipeStore;
+        private readonly ConnectionService _connectionService;
+        private readonly ConnectionStore _connectionStore;
+        private readonly RecipesModel _recipesModel;
+
+        private bool IsConnected => _connectionStore.IsConnected;
+
         #region Relay Commands
         public RelayCommand SetTemperatureCommand { get; }
         public RelayCommand SetFanSpeedCommand { get; }
@@ -18,27 +27,63 @@ namespace Lab_Stenter_Dryer.ViewModel
         public RelayCommand StopCommand { get; }
         public RelayCommand ResetCommand { get; }
         public RelayCommand PauseCommand { get; }
+        public RelayCommand AutoRecipeCommand { get; }
+
 
         #endregion
 
-        public ProcessControlViewModel(CustomRecipeStore customRecipeStore)
+        public ProcessControlViewModel(CustomRecipeStore customRecipeStore,
+            ConnectionService connectionService,
+            ConnectionStore connectionStore)
         {
             _customRecipeStore = customRecipeStore;
-            // Initialize Commands
-            SetTemperatureCommand = new RelayCommand(_ => ConnectionService.WriteCustomTemperature("j+"));
-            SetFanSpeedCommand = new RelayCommand(_ => ConnectionService.WriteCustomFanSpeed("d"));
-            SetExtractorSpeedCommand = new RelayCommand(_ => ConnectionService.WriteCustomExtractorSpeed("d"));
-            SetTimeCommand = new RelayCommand(_ => ConnectionService.WriteCustomDurationTime("s"));
+            _connectionService = connectionService;
+            _connectionStore = connectionStore;
 
-            StartCommand = new RelayCommand(_ => ConnectionService.StartProcess());
-            StopCommand = new RelayCommand(_ => ConnectionService.StopProcess());
-            ResetCommand = new RelayCommand(_ => ConnectionService.ResetProcess());
-            PauseCommand = new RelayCommand(_ => ConnectionService.PauseProcess());
+            _recipesModel = new();
+
+            // Update Properties
+            _connectionStore.PropertyChanged += OnConnectionStoreChanged;
+
+            // Initialize Commands
+            SetTemperatureCommand = new RelayCommand(_ => _connectionService.WriteCustomTemperature(CustomTemperature), _ => _enableCustomRecipes);
+            SetFanSpeedCommand = new RelayCommand(_ => _connectionService.WriteCustomFanSpeed(CustomFanSpeed), _ => _enableCustomRecipes);
+            SetExtractorSpeedCommand = new RelayCommand(_ => _connectionService.WriteCustomExtractorSpeed(CustomExtractorSpeed), _ => _enableCustomRecipes);
+            SetTimeCommand = new RelayCommand(_ => _connectionService.WriteCustomDurationTime(CustomDurationTime), _ => _enableCustomRecipes);
+
+            StartCommand = new RelayCommand(_ => _connectionService.ReadTemperature(CustomTemperature,_recipesModel.BlondaTemperature));
+            StopCommand = new RelayCommand(_ => _connectionService.StopProcess());
+            ResetCommand = new RelayCommand(_ => _connectionService.ResetProcess(), _ => IsConnected);
+            PauseCommand = new RelayCommand(_ => _connectionService.PauseProcess(), _ => IsConnected);
+
+            AutoRecipeCommand = new RelayCommand(
+                _ =>
+                {
+                    _connectionService.ToggleEnableCustomRecipes();
+                    OnPropertyChanged(nameof(_enableCustomRecipes));
+                    OnPropertyChanged(nameof(RecipesStatusBtn));
+                    SetTemperatureCommand.RaiseCanExecuteChanged();
+                    SetFanSpeedCommand.RaiseCanExecuteChanged();
+                    SetExtractorSpeedCommand.RaiseCanExecuteChanged();
+                    SetTimeCommand.RaiseCanExecuteChanged();
+                }, _ => IsConnected);
+        }
+
+        private void OnConnectionStoreChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(_connectionStore.IsConnected))
+            {
+                AutoRecipeCommand.RaiseCanExecuteChanged();
+            }
         }
 
         #region Custom Recipes Properties
+
+        private bool _enableCustomRecipes => _connectionService.EnableCustomRecipes;
+        public string RecipesStatusBtn => _enableCustomRecipes ? "Manual" : "Auto";
+
         // Custom Temperature
-        public string CustomTemperature
+        public float CustomTemperature
         {
             get => _customRecipeStore.CustomTemperature;
             set
@@ -48,7 +93,7 @@ namespace Lab_Stenter_Dryer.ViewModel
             }
         }
         // Custom Fan Speed
-        public string CustomFanSpeed
+        public float CustomFanSpeed
         {
             get => _customRecipeStore.CustomFanSpeed;
             set
@@ -58,7 +103,7 @@ namespace Lab_Stenter_Dryer.ViewModel
             }
         }
         // Custom Extractor Speed
-        public string CustomExtractorSpeed
+        public float CustomExtractorSpeed
         {
             get => _customRecipeStore.CustomExtractorSpeed;
             set
@@ -69,7 +114,7 @@ namespace Lab_Stenter_Dryer.ViewModel
         }
 
         // Custom Duration Time
-        public string CustomDurationTime
+        public float CustomDurationTime
         {
             get => _customRecipeStore.CustomDurationTime;
             set

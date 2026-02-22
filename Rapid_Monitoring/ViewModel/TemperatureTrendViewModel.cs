@@ -1,22 +1,29 @@
 ﻿using System.Collections.ObjectModel;
 using Lab_Stenter_Dryer.Infrastructure.Base;
+using Lab_Stenter_Dryer.Services;
 using ScottPlot;
+using System.Windows;
+using Lab_Stenter_Dryer.Store;
+using Lab_Stenter_Dryer.Model;
 
 namespace Lab_Stenter_Dryer.ViewModel
 {
     public class TemperatureTrendViewModel : ViewModelBase
     {
+        private readonly TemperatureStore _temperatureStore;
 
-        public ObservableCollection<DataPoint> Data
+        // Exponer histórico del Store
+        public IReadOnlyList<TemperaturePoint> HistoricalData => _temperatureStore.HistoricalData;
+
+        // Evento para la vista (tiempo, PV, SP)
+        public event Action<double, float, float, float>? NewSample;
+
+        public TemperatureTrendViewModel(TemperatureStore temperatureStore)
         {
-            get => field;
-            set
-            {
-                field = value;
-                OnPropertyChanged();
-            }
-        }
+            _temperatureStore = temperatureStore;
 
-       
+            // Reenviar evento del Store
+            _temperatureStore.NewSample += (t, pv1, pv2, sp) => NewSample?.Invoke(t, pv1, pv2, sp);
+        }
     }
 }

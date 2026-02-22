@@ -102,172 +102,177 @@
     </UserControl.Resources>
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
-            <StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-                    <!-- Temperature Control -->
-                    <Border Grid.Column="0" Grid.Row="0"
+                <!-- Temperature Control -->
+                <Border Grid.Column="0" Grid.Row="0"
                             Background="#F9FAFB"
                             CornerRadius="8"
                             Padding="24"
                             Margin="12,10,12,0">
-                        <StackPanel>
-                            <TextBlock Text="Temperature Control"
+                    <StackPanel>
+                        <TextBlock Text="Temperature Control"
                                        FontSize="16"
                                        FontWeight="SemiBold"
                                        Foreground="#1F2937"
                                        Margin="0,0,0,16" />
-                            <TextBlock Text="Target Temperature (°C)"
+                        <TextBlock Text="Target Temperature (°C)"
                                        FontSize="13"
                                        FontWeight="Medium"
                                        Foreground="#374151"
                                        Margin="0,0,0,8" />
-                            <TextBox Text="{Binding CustomTemperature}"
+                        <TextBox Text="{Binding CustomTemperature}"
                                      FontSize="14"
                                      Padding="12,10"
                                      Margin="0,0,0,16"
                                      BorderBrush="#D1D5DB"
                                      BorderThickness="1" />
-                            
-                            <Button Content="Set Temperature"
+
+                        <Button Content="Set Temperature"
                                     Style="{StaticResource PrimaryButtonStyle}" 
                                     Command="{Binding SetTemperatureCommand}"/>
-                        </StackPanel>
-                    </Border>
-                    <!-- Speed Control -->
-                    <Border Grid.Column="1" Grid.Row="0"
+                    </StackPanel>
+                </Border>
+                <!-- Fan Control -->
+                <Border Grid.Column="1" Grid.Row="0"
         Background="#F9FAFB"
         CornerRadius="8"
         Padding="24"
         Margin="0,15,10,0">
-                        <StackPanel>
-                            <TextBlock Text="Fan Speed Control"
+                    <StackPanel>
+                        <TextBlock Text="Fan Speed Control"
                    FontSize="16"
                    FontWeight="SemiBold"
                    Foreground="#1F2937"
                    Margin="0,0,0,16" />
-                            <TextBlock Text="Target Speed (RPM)"
+                        <TextBlock Text="Target Speed (RPM)"
                    FontSize="13"
                    FontWeight="Medium"
                    Foreground="#374151"
                    Margin="0,0,0,8" />
-                            <TextBox Text="{Binding CustomFanSpeed}"
+                        <TextBox Text="{Binding CustomFanSpeed}"
                  FontSize="14"
                  Padding="12,10"
                  Margin="0,0,0,16"
                  BorderBrush="#D1D5DB"
                  BorderThickness="1" />
-                            <Button Content="Set Speed"
+                        <Button Content="Set Speed"
                 Style="{StaticResource PrimaryButtonStyle}"
                                     Command="{Binding SetFanSpeedCommand}"/>
-                        </StackPanel>
-                    </Border>
-                    <!-- Duration Time Control -->
-                    <Border Grid.Column="0" Grid.Row="1"
+                    </StackPanel>
+                </Border>
+                <!-- Duration Time Control -->
+                <Border Grid.Column="0" Grid.Row="1"
         Background="#F9FAFB"
         CornerRadius="8"
         Padding="24"
         Margin="12,10,12,0">
-                        <StackPanel>
-                            <TextBlock Text="Duration Time Control"
+                    <StackPanel>
+                        <TextBlock Text="Duration Time Control"
                    FontSize="16"
                    FontWeight="SemiBold"
                    Foreground="#1F2937"
                    Margin="0,0,0,16" />
-                            <TextBlock Text="Target Time (Min)"
+                        <TextBlock Text="Target Time (Min)"
                    FontSize="13"
                    FontWeight="Medium"
                    Foreground="#374151"
                    Margin="0,0,0,8" />
-                            <TextBox Text="{Binding CustomDurationTime}"
+                        <TextBox Text="{Binding CustomDurationTime}"
                  FontSize="14"
                  Padding="12,10"
                  Margin="0,0,0,16"
                  BorderBrush="#D1D5DB"
                  BorderThickness="1" />
-                            <Button Content="Set Time"
+                        <Button Content="Set Time"
                 Style="{StaticResource PrimaryButtonStyle}" 
                                     Command="{Binding SetTimeCommand}"/>
-                        </StackPanel>
-                    </Border>
-                    <!-- Extractor Speed Control -->
-                    <Border Grid.Column="2" Grid.Row="0"
+                    </StackPanel>
+                </Border>
+                <!-- Extractor Speed Control -->
+                <Border Grid.Column="2" Grid.Row="0"
 Background="#F9FAFB"
 CornerRadius="8"
 Padding="24"
 Margin="0,15,10,0">
-                        <StackPanel>
-                            <TextBlock Text="Extractor Speed Control"
+                    <StackPanel>
+                        <TextBlock Text="Extractor Speed Control"
            FontSize="16"
            FontWeight="SemiBold"
            Foreground="#1F2937"
            Margin="0,0,0,16" />
-                            <TextBlock Text="Target Speed (RPM)"
+                        <TextBlock Text="Target Speed (RPM)"
            FontSize="13"
            FontWeight="Medium"
            Foreground="#374151"
            Margin="0,0,0,8" />
-                            <TextBox Text="{Binding CustomExtractorSpeed}"
+                        <TextBox Text="{Binding CustomExtractorSpeed}"
          FontSize="14"
          Padding="12,10"
          Margin="0,0,0,16"
          BorderBrush="#D1D5DB"
          BorderThickness="1" />
-                            <Button Content="Set Speed"
+                        <Button Content="Set Speed"
         Style="{StaticResource PrimaryButtonStyle}"
                                     Command="{Binding SetExtractorSpeedCommand}"/>
-                        </StackPanel>
-                    </Border>
-                    <!-- Control Functions -->
-                    <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
+                    </StackPanel>
+                </Border>
+                <!-- Control Functions -->
+                <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
                             Background="#F9FAFB"
                             CornerRadius="8"
                             Padding="24"
                             Margin="12,50,12,0">
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                
-                                <!--Control Buttons-->
-                                <!--Start Button-->
-                                <Button Grid.Column="0" Content="Start" 
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--Control Buttons-->
+                            <!--Start Button-->
+                            <Button Grid.Column="0" Content="Start" 
                                     Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
                                         Command="{Binding StartCommand}"/>
-                                <!--Stop Button-->
-                                <Button Grid.Column="1" Content="Stop"
+                            <!--Stop Button-->
+                            <Button Grid.Column="1" Content="Stop"
                                         Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
                                         Command="{Binding StopCommand}"/>
 
-                                <!--Reset Button-->
-                                <Button Grid.Column="2" Content="Reset"
+                            <!--Reset Button-->
+                            <Button Grid.Column="2" Content="Reset"
                                         Margin="6,0,3,0" Style="{StaticResource PrimaryButtonStyle}"
                                         Command="{Binding ResetCommand}"/>
 
-                                <!--Pause Button-->
-                                <Button Grid.Column="3" Content="Pause"
+                            <!--Pause Button-->
+                            <Button Grid.Column="3" Content="Pause"
                                          Margin="6,0,0,0" Style="{StaticResource PrimaryButtonStyle}"
                                         Command="{Binding PauseCommand}"/>
-                            </Grid>
-                        </StackPanel>
-                    </Border>
-                    
-                </Grid>
-            </StackPanel>
-        </ScrollViewer>
+                            <!--Recipe Manual/Auto Button-->
+                            <Button Grid.Column="0" Grid.Row="1" Content="{Binding RecipesStatusBtn}"
+                                        Margin="6,30,3,0" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding AutoRecipeCommand}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>

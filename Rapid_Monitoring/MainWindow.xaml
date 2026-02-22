@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Lab_Stenter_Dryer"
         xmlns:component="clr-namespace:Lab_Stenter_Dryer.Components"
         mc:Ignorable="d"
+        RenderOptions.BitmapScalingMode="HighQuality"
         ResizeMode="CanMinimize"
         Title="Lab Stenter Dryer" Height="560" Width="1000">
     <Grid>
