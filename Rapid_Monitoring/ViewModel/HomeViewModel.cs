@@ -12,7 +12,6 @@ namespace Lab_Stenter_Dryer.ViewModel
     public class HomeViewModel : ViewModelBase
     {
         private readonly RecipesModel _recipesModel;
-        private readonly TemperaturePoint _temperaturePoint;
         private readonly ConnectionStore _connectionStore;
         private readonly ConnectionService _connectionService;
         private readonly TemperatureStore _temperatureStore;
@@ -31,14 +30,13 @@ namespace Lab_Stenter_Dryer.ViewModel
             TemperatureStore temperatureStore)
         {
             _recipesModel = new RecipesModel();
-            _temperaturePoint = new TemperaturePoint();
             _connectionStore = connectionStore;
             _connectionService = connectionService;
             _temperatureStore = temperatureStore;
             _connectionStore.PropertyChanged += OnConnectionStoreChanged;
             _temperatureStore.PropertyChanged += OnTemperatureStoreChanged;
 
-
+            #region Init Commands
             // Init Commands for Load Recipes
             // Polyester Recipe
             LoadRecipeOneCommand = new RelayCommand(_ => _connectionService.WriteRecipe
@@ -73,6 +71,7 @@ namespace Lab_Stenter_Dryer.ViewModel
                 DecorationProcessTime
             ), _ => IsConnected);
         }
+            #endregion
 
         #region Recipe Properties
         //Polyester Recipe
@@ -141,12 +140,6 @@ namespace Lab_Stenter_Dryer.ViewModel
             }
         }
 
-        // Connection Status
-        public string ConnectionStatus =>
-            IsConnected ? "Connected" : "Disconnected";
-        public Brush ColorConnectionStatus =>
-            IsConnected ? Brushes.Green : Brushes.Orange;
-
         // Machine Status
         public string MachineStatus =>
             CurrentMachineStatus ? "Running" : "Stopped";
@@ -169,13 +162,10 @@ namespace Lab_Stenter_Dryer.ViewModel
         }
         #endregion
 
-        private void OnConnectionStoreChanged (object sender, PropertyChangedEventArgs e)
+        private void OnConnectionStoreChanged (object? sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(_connectionStore.IsConnected))
             {
-                OnPropertyChanged(nameof(ConnectionStatus));
-                OnPropertyChanged(nameof(ColorConnectionStatus));
-
                 // Commands
                 LoadRecipeOneCommand.RaiseCanExecuteChanged();
                 LoadRecipeTwoCommand.RaiseCanExecuteChanged();

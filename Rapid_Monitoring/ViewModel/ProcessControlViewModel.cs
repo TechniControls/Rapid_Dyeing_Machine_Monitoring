@@ -51,8 +51,8 @@ namespace Lab_Stenter_Dryer.ViewModel
             SetExtractorSpeedCommand = new RelayCommand(_ => _connectionService.WriteCustomExtractorSpeed(CustomExtractorSpeed), _ => _enableCustomRecipes);
             SetTimeCommand = new RelayCommand(_ => _connectionService.WriteCustomDurationTime(CustomDurationTime), _ => _enableCustomRecipes);
 
-            StartCommand = new RelayCommand(_ => _connectionService.ReadTemperature(CustomTemperature,_recipesModel.BlondaTemperature));
-            StopCommand = new RelayCommand(_ => _connectionService.StopProcess());
+            StartCommand = new RelayCommand(_ => _connectionService.ReadTemperature(CustomTemperature,_recipesModel.BlondaTemperature), _=> IsConnected);
+            StopCommand = new RelayCommand(_ => _connectionService.StopProcess(), _=> IsConnected);
             ResetCommand = new RelayCommand(_ => _connectionService.ResetProcess(), _ => IsConnected);
             PauseCommand = new RelayCommand(_ => _connectionService.PauseProcess(), _ => IsConnected);
 
@@ -74,13 +74,34 @@ namespace Lab_Stenter_Dryer.ViewModel
             if (e.PropertyName == nameof(_connectionStore.IsConnected))
             {
                 AutoRecipeCommand.RaiseCanExecuteChanged();
+                StartCommand.RaiseCanExecuteChanged();
+                StopCommand.RaiseCanExecuteChanged();
+                ResetCommand.RaiseCanExecuteChanged();
+                PauseCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        // TODO: Refactor this method to be more scalable and maintainable,
+        // maybe using a dictionary to map recipe names to their properties and pass value to setpoint temperature scatter
+        private float RecipeSetpoint(string recipeName)
+        {
+            switch (recipeName)
+            {
+                case "Blonda":
+                    return _recipesModel.BlondaTemperature;
+                case "Polyester":
+                    return _recipesModel.PolyesterTemperature;
+                case "Powernet":
+                    return _recipesModel.PowernetTemperature;
+                default:
+                    return 0f;
             }
         }
 
         #region Custom Recipes Properties
 
         private bool _enableCustomRecipes => _connectionService.EnableCustomRecipes;
-        public string RecipesStatusBtn => _enableCustomRecipes ? "Manual" : "Auto";
+        public string RecipesStatusBtn => _enableCustomRecipes ? "Auto Recipe" : "Manual Recipe";
 
         // Custom Temperature
         public float CustomTemperature

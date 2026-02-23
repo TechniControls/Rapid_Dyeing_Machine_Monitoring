@@ -3,8 +3,6 @@ using Lab_Stenter_Dryer.Services.Interfaces;
 using Lab_Stenter_Dryer.Store;
 using S7.Net;
 using System.Diagnostics;
-using System.Drawing.Imaging.Effects;
-using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace Lab_Stenter_Dryer.Services

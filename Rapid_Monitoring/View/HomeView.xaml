@@ -7,102 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.Resources>
-        <!-- Styles -->
-        <Style x:Key="TabButtonStyle" TargetType="RadioButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border x:Name="Border"
-                                Background="Transparent"
-                                BorderThickness="0,0,0,2"
-                                BorderBrush="Transparent"
-                                Padding="20,12">
-                            <StackPanel Orientation="Horizontal">
-                                <Path x:Name="Icon"
-                                      Fill="#6B7280"
-                                      Data="{TemplateBinding Tag}"
-                                      Width="20" Height="20"
-                                      Stretch="Uniform"
-                                      Margin="0,0,8,0" />
-                                <TextBlock x:Name="Text"
-                                           Text="{TemplateBinding Content}"
-                                           FontSize="14"
-                                           FontWeight="Medium"
-                                           Foreground="#6B7280" />
-                            </StackPanel>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#3B82F6" />
-                                <Setter TargetName="Text" Property="Foreground" Value="#3B82F6" />
-                                <Setter TargetName="Icon" Property="Fill" Value="#3B82F6" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Text" Property="Foreground" Value="#374151" />
-                                <Setter TargetName="Icon" Property="Fill" Value="#374151" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#3B82F6" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="Padding" Value="16,10" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                CornerRadius="6"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2563EB" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="ControlButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="Padding" Value="16,12" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                CornerRadius="6"
-                                Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="CardStyle" TargetType="Border">
-            <Setter Property="Background" Value="White" />
-            <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Padding" Value="24" />
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect Color="#000000" Opacity="0.1" BlurRadius="10" ShadowDepth="2" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
     <Grid Margin="24">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -141,34 +45,8 @@
 
                     <!-- Status and Temperature -->
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,0,0,0">
-                        <!-- Connection Status -->
-                        <StackPanel Margin="0,0,32,0">
-                            <TextBlock Text="Connection Status" 
-              FontSize="12" 
-              Foreground="#6B7280" 
-              HorizontalAlignment="Right"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
-                                <Ellipse Width="12" Height="12" Fill="{Binding ColorConnectionStatus}" Margin="0,0,8,0">
-                                    <Ellipse.Triggers>
-                                        <EventTrigger RoutedEvent="Loaded">
-                                            <BeginStoryboard>
-                                                <Storyboard RepeatBehavior="Forever">
-                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                           From="1.0" To="0.3" Duration="0:0:1"
-                                           AutoReverse="True"/>
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger>
-                                    </Ellipse.Triggers>
-                                </Ellipse>
-                                <TextBlock Text="{Binding ConnectionStatus}" 
-                  FontSize="14" 
-                  FontWeight="SemiBold" 
-                  Foreground="#1F2937"/>
-                            </StackPanel>
-                        </StackPanel>
                         <!-- Machine Status -->
-                        <StackPanel Margin="0,0,32,0">
+                        <StackPanel Margin="50,0,32,0">
                             <TextBlock Text="Estado Actual" 
                                       FontSize="12" 
                                       Foreground="#6B7280" 
@@ -230,7 +108,9 @@
                                        FontWeight="Bold" 
                                        Foreground="#3B82F6" 
                                        Margin="0,4,0,0">
-                                <Run Text="{Binding TemperatureDelta, Mode=OneWay}"/>
+                                <Run Text="{Binding TemperatureDelta,
+                                    Mode=OneWay,
+                                    StringFormat={}{0:F1}}"/>
                                 <Run Text="°C"/>
                             </TextBlock>
                         </StackPanel>

@@ -13,8 +13,8 @@ namespace Lab_Stenter_Dryer.View
     {
         private TemperatureTrendViewModel? _vm;
 
-        private SignalXY FirstPT100 = null!;
-        private SignalXY SecondPT100 = null;
+        private SignalXY _firstPT100 = null!;
+        private SignalXY _secondPT100 = null;
         private SignalXY _setPointSignal = null!;
 
         private double[] _xBuffer = null!;
@@ -93,16 +93,16 @@ namespace Lab_Stenter_Dryer.View
                 _writeIndex = 1;
             }
 
-            // Crear señales ScottPlot
-            FirstPT100 = ScatterPlot.Plot.Add.SignalXY(_xBuffer, _processBufferFirstPT100);
-            FirstPT100.LegendText = "PT100-1 (PV)";
-            FirstPT100.LineWidth = 2;
-            FirstPT100.LineColor = Colors.Blue;
+            // Scatter plot signals
+            _firstPT100 = ScatterPlot.Plot.Add.SignalXY(_xBuffer, _processBufferFirstPT100);
+            _firstPT100.LegendText = "PT100-1 (PV)";
+            _firstPT100.LineWidth = 2;
+            _firstPT100.LineColor = Colors.Blue;
 
-            SecondPT100 = ScatterPlot.Plot.Add.SignalXY(_xBuffer, _processBufferSecondPT100);
-            SecondPT100.LegendText = "PT100-2 (PV)";
-            SecondPT100.LineWidth = 2;
-            SecondPT100.LineColor = Colors.Red;
+            _secondPT100 = ScatterPlot.Plot.Add.SignalXY(_xBuffer, _processBufferSecondPT100);
+            _secondPT100.LegendText = "PT100-2 (PV)";
+            _secondPT100.LineWidth = 2;
+            _secondPT100.LineColor = Colors.Red;
 
             _setPointSignal = ScatterPlot.Plot.Add.SignalXY(_xBuffer, _setPointBuffer);
             _setPointSignal.LegendText = "SetPoint (SP)";
@@ -111,16 +111,16 @@ namespace Lab_Stenter_Dryer.View
 
             UpdateRenderIndexes();
 
-            // Configuración visual
+            // Visual settings
             ScatterPlot.Plot.Axes.DateTimeTicksBottom();
             ScatterPlot.Plot.YLabel("Temperature (°C)");
             ScatterPlot.Plot.ShowLegend();
             ScatterPlot.Plot.Axes.AutoScale();
 
-            // Suscribirse a nuevos datos
+            // Subscribe to new samples
             _vm.NewSample += OnNewSample;
 
-            // Timer de refresco (UI independiente del PLC)
+            // Timer de refresco (UI independiente del PLC) Refresh time each 100 ms, stay away plc update rate
             _refreshTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(500)
@@ -169,11 +169,11 @@ namespace Lab_Stenter_Dryer.View
         {
             if (_bufferFull)
             {
-                FirstPT100.MinRenderIndex = _writeIndex;
-                FirstPT100.MaxRenderIndex = _writeIndex + BufferSize - 1;
+                _firstPT100.MinRenderIndex = _writeIndex;
+                _firstPT100.MaxRenderIndex = _writeIndex + BufferSize - 1;
 
-                SecondPT100.MinRenderIndex = _writeIndex;
-                SecondPT100.MaxRenderIndex = _writeIndex + BufferSize - 1;
+                _secondPT100.MinRenderIndex = _writeIndex;
+                _secondPT100.MaxRenderIndex = _writeIndex + BufferSize - 1;
 
                 _setPointSignal.MinRenderIndex = _writeIndex;
                 _setPointSignal.MaxRenderIndex = _writeIndex + BufferSize - 1;
@@ -182,11 +182,11 @@ namespace Lab_Stenter_Dryer.View
             {
                 int maxIndex = Math.Max(0, _writeIndex - 1);
 
-                FirstPT100.MinRenderIndex = 0;
-                FirstPT100.MaxRenderIndex = maxIndex;
+                _firstPT100.MinRenderIndex = 0;
+                _firstPT100.MaxRenderIndex = maxIndex;
 
-                SecondPT100.MinRenderIndex = 0;
-                SecondPT100.MaxRenderIndex = maxIndex;
+                _secondPT100.MinRenderIndex = 0;
+                _secondPT100.MaxRenderIndex = maxIndex;
 
                 _setPointSignal.MinRenderIndex = 0;
                 _setPointSignal.MaxRenderIndex = maxIndex;
@@ -200,7 +200,10 @@ namespace Lab_Stenter_Dryer.View
 
             try
             {
-                double now = DateTime.Now.ToOADate();
+                // Último tiempo real del proceso
+                int lastIndex = (_writeIndex - 1 + BufferSize) % BufferSize;
+                double now = _xBuffer[lastIndex];
+                //double now = DateTime.Now.ToOADate();
                 double windowStart = now - TimeSpan.FromMinutes(10).TotalDays;
 
                 // Ventana deslizante tipo SCADA

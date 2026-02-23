@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using Lab_Stenter_Dryer.Infrastructure.Base;
-using Lab_Stenter_Dryer.Services;
-using ScottPlot;
-using System.Windows;
+﻿using Lab_Stenter_Dryer.Infrastructure.Base;
 using Lab_Stenter_Dryer.Store;
 using Lab_Stenter_Dryer.Model;
 
@@ -12,10 +8,10 @@ namespace Lab_Stenter_Dryer.ViewModel
     {
         private readonly TemperatureStore _temperatureStore;
 
-        // Exponer histórico del Store
+        // Expose HistoricalData from the Store
         public IReadOnlyList<TemperaturePoint> HistoricalData => _temperatureStore.HistoricalData;
 
-        // Evento para la vista (tiempo, PV, SP)
+        // Event to update view (Time, PT100-1, PT100-2, SetPoint)
         public event Action<double, float, float, float>? NewSample;
 
         public TemperatureTrendViewModel(TemperatureStore temperatureStore)

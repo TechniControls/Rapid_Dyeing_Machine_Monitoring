@@ -6,35 +6,10 @@
              xmlns:local="clr-namespace:Lab_Stenter_Dryer.Components"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="White" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <TextBlock Text="{TemplateBinding Content}" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <TextBlock Text="{TemplateBinding Content}" TextDecorations="Underline" />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
     <Grid Background="#F3F4F6" MaxWidth="1080" Height="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -48,14 +23,31 @@
                VerticalAlignment="Center"
                Margin="20,0,0,0"/>
 
-        <Button
-            Grid.Column="1"
-            Margin="10 0 0 0"
-            FontSize="14"
-            VerticalAlignment="Center"
-            Foreground="Black"
-            Command="{Binding NavigateHomeCommand}"
-            Content="Home" />
+        <StackPanel Margin="0,3,32,0" Grid.Column="1">
+            <TextBlock Text="Connection Status" 
+FontSize="12" 
+Foreground="#6B7280" 
+HorizontalAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                <Ellipse Width="12" Height="12" Fill="{Binding ColorConnectionStatus}" Margin="0,0,8,0">
+                    <Ellipse.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                             From="1.0" To="0.3" Duration="0:0:1"
+                             AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
+                <TextBlock Text="{Binding ConnectionStatus}" 
+    FontSize="14" 
+    FontWeight="SemiBold" 
+    Foreground="#1F2937"/>
+            </StackPanel>
+        </StackPanel>
 
         <Button
             Grid.Column="2"
@@ -63,8 +55,9 @@
             FontSize="14"
             VerticalAlignment="Center"
             Foreground="Black"
-            Command="{Binding NavigateProcessControlCommand}"
-            Content="Process Control" />
+            Command="{Binding NavigateHomeCommand}"
+            Content="Home"
+            Style="{StaticResource NavigationButton}"/>
 
         <Button
             Grid.Column="3"
@@ -72,16 +65,28 @@
             FontSize="14"
             VerticalAlignment="Center"
             Foreground="Black"
-            Command="{Binding NavigateTemperatureTrendCommand}"
-            Content="Temperature Scatter"/>
+            Command="{Binding NavigateProcessControlCommand}"
+            Content="Process Control"
+            Style="{StaticResource NavigationButton}"/>
 
         <Button
             Grid.Column="4"
+            Margin="10 0 0 0"
+            FontSize="14"
+            VerticalAlignment="Center"
+            Foreground="Black"
+            Command="{Binding NavigateTemperatureTrendCommand}"
+            Content="Temperature Scatter"
+            Style="{StaticResource NavigationButton}"/>
+
+        <Button
+            Grid.Column="5"
             Margin="10 0 30 0"
             FontSize="14"
             VerticalAlignment="Center"
             Foreground="Black"
             Command="{Binding OpenConnectionCommand}"
-            Content="Connection"/>
+            Content="Connection"
+            Style="{StaticResource NavigationButton}"/>
     </Grid>
 </UserControl>

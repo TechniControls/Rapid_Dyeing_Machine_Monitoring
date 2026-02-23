@@ -9,13 +9,11 @@ using System.Diagnostics;
 using System.Windows.Media;
 using System.Net;
 using System.Windows;
-using System.Runtime.CompilerServices;
 
 namespace Lab_Stenter_Dryer.ViewModel
 {
     public class ConnectionViewModel : ViewModelBase, IDataErrorInfo
     {
-        public static bool IsConnectedGlobal { get; set; }
 
         #region Instance Classes
         private readonly ConnectionSetupModel _connectionSetupModel;
@@ -55,7 +53,6 @@ namespace Lab_Stenter_Dryer.ViewModel
             {
                 _connectionStore.SelectedCpuType = value;
                 OnPropertyChanged();
-                Debug.WriteLine($"Selected CPU Type: {value}");
             }
         }
 
@@ -77,7 +74,6 @@ namespace Lab_Stenter_Dryer.ViewModel
             {
                 _connectionStore.SelectedRack = value;
                 OnPropertyChanged();
-                Debug.WriteLine($"Selected Rack: {value}");
             }
         }
 
@@ -88,12 +84,11 @@ namespace Lab_Stenter_Dryer.ViewModel
             {
                 _connectionStore.SelectedSlot = value;
                 OnPropertyChanged();
-                Debug.WriteLine($"Selected Slot: {value}");
             }
         }
 
         public bool IsConnected => _connectionStore.IsConnected;
-        
+
         // Connection Status Indicator
         public string ConnectionStatus => IsConnected ? "Connected" : "Disconnected";
         public Brush ConnectionStatusColor => IsConnected ? Brushes.Green : Brushes.Orange;
@@ -118,11 +113,10 @@ namespace Lab_Stenter_Dryer.ViewModel
         }
         #endregion
 
-        private void OnConnectionStoreChanged(object sender, PropertyChangedEventArgs e)
+        private void OnConnectionStoreChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(_connectionStore.IsConnected))
+            if (e.PropertyName == nameof(_connectionStore.IsConnected))
             {
-                OnPropertyChanged();
                 OnPropertyChanged(nameof(ConnectionStatus));
                 OnPropertyChanged(nameof(ConnectionStatusColor));
 
@@ -134,18 +128,12 @@ namespace Lab_Stenter_Dryer.ViewModel
         #region Methods
         private void OpenConnection()
         {
-
-
             bool connection = _connectionService.ConnectPlc(SelectedCpuType, PlcIpAddress, SelectedRack, SelectedSlot);
-
-           
         }
 
         private void CloseConnection()
         {
             bool connection = _connectionService.DisconnectPlc();
-
-            
         }
         #endregion
     }

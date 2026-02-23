@@ -59,6 +59,7 @@ C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debu
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debug\net10.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\bin\Debug\net10.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Lab_Stenter_Dryer.csproj.AssemblyReference.cache
+C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ConnectionWindow.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\MainWindow.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\Components\NavigationBar.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ConnectionWindow.g.cs
@@ -68,9 +69,9 @@ C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debu
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\App.g.cs
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Lab_Stenter_Dryer_MarkupCompile.cache
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\Lab_Stenter_Dryer_MarkupCompile.lref
+C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\App.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\MainWindow.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\Components\NavigationBar.baml
-C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ConnectionWindow.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\HomeView.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\ProcessControlView.baml
 C:\Users\Stiven\Documents\VS_Projects\Rapid_Monitoring\Rapid_Monitoring\obj\Debug\net10.0-windows\View\TemperatureTrendView.baml
